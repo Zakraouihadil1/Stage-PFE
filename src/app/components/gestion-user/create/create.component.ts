@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class CreateComponent implements OnInit {
 
-  Roles: any = ['user','admin'];
+  Roles: any = ['admin'];
 
   
   form: FormGroup = new FormGroup({

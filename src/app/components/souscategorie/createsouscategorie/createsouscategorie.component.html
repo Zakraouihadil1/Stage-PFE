@@ -116,38 +116,24 @@
 
                             <div class="form-group">
 
-                                <label> CategorieName</label>
+                                <label>Categorie</label>
                                 <select
-                                [(ngModel)]="categorie.Name"
-                          
+                            
                                   type="text"
-                                  formControlName="Name"
+                                  formControlName="categorie"
                                   class="form-control"
-                                  [ngClass]="{ 'is-invalid': submitted && f['Name'].errors }"
+                                  [ngClass]="{ 'is-invalid': submitted && f['categorie'].errors }"
                                 >
-                                <option *ngFor="let categorie of categories" >{{categorie.Name}}</option>
-                        </select>
-                        </div>
-                        <div class="form-group">
-
-                            <label> CategorieId</label>
-                            <select
-                            [(ngModel)]="categorie.id"
-                      
-                              type="text"
-                              formControlName="categorie"
-                              class="form-control"
-                              [ngClass]="{ 'is-invalid': submitted && f['categorie'].errors }"
-                            >
-                            <option *ngFor="let categorie of categories" >{{categorie.id}}</option>
-                    </select>
-                    </div>
-
+                                <option *ngFor="let categorie of categories" value="{{categorie.id}}">{{categorie.Name}}</option>
+                            </select>
+                            </div>
+                         
+                    
                             <div class="form-group">
                                 <label for="body">Nom SousCategorie:</label>
                                 <input 
                                 id="Titre" 
-                                type="Titre" 
+                                type="text" 
                                 formControlName="Titre"
                                 class="form-control"
                                 [ngClass]="{ 'is-invalid': submitted && f['Titre'].errors }"> 
@@ -157,8 +143,7 @@
                                 
                             </div>
                   
-                  
-                         
+                           
                   
                        
                             <button class="btn btn-success" type="submit"   >Create</button>

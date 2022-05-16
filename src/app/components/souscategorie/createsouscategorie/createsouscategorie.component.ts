@@ -35,11 +35,11 @@ categorie={
       this.categories = data;
       console.log(this.categories);
     })  
+
     this.form = new FormGroup({
-      Name: new FormControl('', Validators.required),
-      categorie: new FormControl('', Validators.required),
       Titre: new FormControl('', Validators.required),
-      
+      categorie: new FormControl('', Validators.required),
+
 
 
     });
@@ -50,6 +50,13 @@ categorie={
   }
 
   submit(){
+
+   const formData = new FormData();
+   
+    formData.append('Titre', this.form.value.Titre)
+    formData.append('categorie', this.form.value.categorie)
+ 
+
 
     this.submitted = true;
     if (this.form.invalid) {

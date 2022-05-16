@@ -5,7 +5,10 @@ import { JwtService } from "../../jwt.service";
 import jwtDecode from 'jwt-decode';
 import { Router,ActivatedRoute} from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-
+import { categorie } from 'src/app/models/categorie.model';
+import { souscategorie } from 'src/app/models/souscategorie.model';
+import { SouscategorieService } from 'src/app/services/souscategorie.service';
+import { CategorieService } from '../../services/categorie.service';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -20,11 +23,23 @@ export class ProfileComponent implements OnInit {
   data:any;
   form!: FormGroup;
   id!: any;
+  categories: categorie[] = [];
+  souscategories: souscategorie[] = [];
+
+  categorie={
+Name:'',
+id:'',
+  }
+  souscategorie={
+    Titre:'',
+    id: '',
+  }
+
 
 user:user={
-email:'',
 firstname:'',
 lastname:'',
+email:'',
 roles:'',
 id:''
 
@@ -32,7 +47,7 @@ id:''
   submitted= false;
 
 
-  constructor(private jwtService:JwtService,public router: Router,   public userService: UserService,    private route: ActivatedRoute,
+  constructor(private jwtService:JwtService,public router: Router, private categorieService:CategorieService,private souscategorieService:SouscategorieService,  public userService: UserService,    private route: ActivatedRoute,
     ) { }
 
 
@@ -42,9 +57,9 @@ id:''
   
     this.token = localStorage.getItem('access_token');
 
-    this.data = jwtDecode(this.token);
-    this.user=this.data.user;
-    console.log(this.data);
+    this.user = jwtDecode(this.token);
+    // this.user=this.data.user;
+    // console.log(this.data);
 
 
 
@@ -53,10 +68,22 @@ id:''
       firstname: new FormControl('',[Validators.required]),
       lastname: new FormControl('',[Validators.required]),
       email: new FormControl('',[Validators.required ,  Validators.email]),
+           user:new FormControl(this.user.id, Validators.required),
+
     //  id: new FormControl('',[Validators.required ,  ]),
     //  roles: new FormControl('',[Validators.required ,  ]),
 
        });
+
+       this.categorieService.getAllData().subscribe((data: categorie[])=>{
+        this.categories = data;
+        console.log(this.categories);
+      })  
+    
+      this.souscategorieService.getAllData().subscribe((data: souscategorie[])=>{
+        this.souscategories = data;
+        console.log(this.souscategories);
+      })
 }
 
 
@@ -70,6 +97,8 @@ submit(){
     this.userService.update(this.id, this.form.value).subscribe((res:any) => {
       alert('User updated successfully!');
       this.router.navigateByUrl('user/index');
+   
+
  })
   }
  

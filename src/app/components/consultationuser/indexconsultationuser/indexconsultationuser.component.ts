@@ -5,6 +5,8 @@ import { user } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
 import { JwtService } from 'src/app/jwt.service';
 import jwtDecode from 'jwt-decode';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-indexconsultationuser',
@@ -13,10 +15,12 @@ import jwtDecode from 'jwt-decode';
 })
 export class IndexconsultationuserComponent implements OnInit {
 
-
+  Lieu: any = ['chez le fournisseur','chez le client'];
   consultations: consultation[] = [];
+  consultation!:consultation;
   users: user[] = [];
   data:any;
+  id!: string;
   token:any;
   user={
     firstname:'',
@@ -26,19 +30,30 @@ export class IndexconsultationuserComponent implements OnInit {
     password:'',
     roles:''
   }
-  constructor(private consultationService:ConsultationService,private userService:UserService, private jwtService:JwtService) { }
+  form!: FormGroup;
+  submitted = false;
+ 
+
+  
+  constructor(private consultationService:ConsultationService,private userService:UserService, private jwtService:JwtService,public router: Router,private route: ActivatedRoute,) { }
 
   ngOnInit(): void {
 
-   
-      this.token = localStorage.getItem('access_token');
+    this.token = localStorage.getItem('access_token');
 
-      this.data = jwtDecode(this.token);
-  
-
+    this.data = jwtDecode(this.token);
  
+   
+    this.form = new FormGroup({
+      Date: new FormControl('', [Validators.required]),
+      Lieu: new FormControl('', Validators.required),
+      sujet: new FormControl('', Validators.required),
+      user:new FormControl(this.data.id, Validators.required),
+      // status: new FormControl('',[Validators.required]),
 
-    
+    });
+
+
 
     this.userService.getAllData().subscribe((data: user[])=>{
       this.users = data;
@@ -47,7 +62,8 @@ export class IndexconsultationuserComponent implements OnInit {
     this.consultationService.findbyuserid(this.data.id).subscribe((data: consultation[])=>{
       this.consultations = data;
       console.log(this.consultations);
-    })  
+    }) 
+  
 
   /*this.consultationService.getAllData().subscribe((data: consultation[])=>{
       this.consultations = data;
@@ -56,10 +72,29 @@ export class IndexconsultationuserComponent implements OnInit {
   }
 
   
-    deleteconsultation(id:string){
-      this.consultationService.delete(id).subscribe(res => {
-        this.consultations = this.consultations.filter(item => item.id !== id);
-        alert('Consultation deleted successfully!');
-   })
+   
+    logout() {
+      localStorage.removeItem('access_token');
+      this.router.navigate(['/login']);
     }
+    get f(){
+      return this.form.controls;
+    }
+    
+  submit(){
+
+    this.submitted = true;
+   
+      this.consultationService.create(this.form.value).subscribe((res:any) => {
+  alert('Consultation created successfully!');
+    // this.router.navigateByUrl('consultationuser/index');
+   })
+    
+    
+  }
+
+     loggedIn(){
+      return localStorage.getItem('access_token') ;
+    }
+  
 }

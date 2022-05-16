@@ -1,4 +1,5 @@
 import { CheckboxControlValueAccessor } from "@angular/forms";
+import { user } from 'src/app/models/user.model';
 
 export class projet{
     id?:any;
@@ -7,6 +8,9 @@ export class projet{
     M1?:string;
     Process?:string;
     Machines?:CheckboxControlValueAccessor;
-   
+    user?:any;
+    valid?:boolean;
+    status?:string;
+
 
 }

@@ -3,6 +3,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ConsultationService } from "../../../services/consultation.service";
 import { consultation } from '../../../models/consultation.model';
+import { UserService } from 'src/app/services/user.service';
+import { user } from 'src/app/models/user.model';
+import jwtDecode from 'jwt-decode';
 
 
 @Component({
@@ -14,18 +17,34 @@ export class CreateconsultationuserComponent implements OnInit {
 
   form!: FormGroup;
   submitted = false;
+  users: user[] = [];
+  Lieu: any = ['chez le fournisseur','chez le client'];
+  data:any;
+  token:any;
+  user={
+    firstname:'',
+    email: '',
+    lastname:'',
+    id:'',
+    password:'',
+    roles:''
+  }
 
-
-
-  constructor(private consultationService:ConsultationService,
+  constructor(private consultationService:ConsultationService,private userService:UserService,
     private router: Router
     ) { }
 
   ngOnInit(): void {
+
+    this.token = localStorage.getItem('access_token');
+
+    this.data = jwtDecode(this.token);
+
     this.form = new FormGroup({
       Date: new FormControl('', [Validators.required]),
       Lieu: new FormControl('', Validators.required),
       sujet: new FormControl('', Validators.required),
+      user:new FormControl(this.data.id, Validators.required),
     });
   }
 
@@ -48,4 +67,12 @@ export class CreateconsultationuserComponent implements OnInit {
     }
     
   }
+   logout() {
+      localStorage.removeItem('access_token');
+      this.router.navigate(['/login']);
+    }
+    
+     loggedIn(){
+      return localStorage.getItem('access_token') ;
+    }
 }

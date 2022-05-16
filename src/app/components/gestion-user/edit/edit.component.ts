@@ -12,7 +12,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./edit.component.css']
 })
 export class EditComponent implements OnInit {
-
+  token:any;
+  data:any;
   id!: string;
   user!: user;
   form!: FormGroup;
@@ -47,7 +48,9 @@ export class EditComponent implements OnInit {
       firstname: new FormControl('',[Validators.required]),
       lastname: new FormControl('',[Validators.required]),
       email: new FormControl('',[Validators.required ,  Validators.email]),
-      roles: new FormControl('',[Validators.required])   });
+      roles: new FormControl('',[Validators.required])  ,
+      id: new FormControl('',[Validators.required])   });
+
   }
     
   /**
@@ -73,7 +76,7 @@ export class EditComponent implements OnInit {
     else {
       this.userService.update(this.id, this.form.value).subscribe((res:any) => {
         alert('User updated successfully!');
-        this.router.navigateByUrl('user/index');
+        this.router.navigateByUrl('profile');
    })
 
    

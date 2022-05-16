@@ -184,51 +184,62 @@
                     <div class=" col-md-3 col-sm-6 ">
                       <div class="bg-gray p-a60">
                           <div class="header-nav navbar-collapse ">
-                              <ul class=" nav navbar-nav  text-uppercase">
+                            <ul class=" nav navbar-nav  text-uppercase">
+                                  
                                 <li>
                                     <a href="/user">Dashboard user</a>
                                    
                                   </li>  
-  
-                                  <li>
-                                    <a href="user/:userId/view">View Account</a>
-                                   
-                                  </li>  
                                   
-  
-                                    
-                                    
+                                  <div class="header-nav navbar-collapse ">
+                                    <ul class=" nav navbar-nav  text-uppercase">
+                                        
+        
+                                        <li>
+                                          <a href="/profile">Profile</a>
+                                         
+                                        </li>  
+                                        
+        
+                                          
+                                          
+                                        <li>
+                                            <a href="javascript:;">Consultation</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="/consultationuser/create">Demande consultation</a></li>
+                                                <li><a href="/consultationuser/index">Suivre consultation</a></li>
+                                            </ul>                                    
+                                        </li> 
+                                        
+                                        <li>
+                                            <a href="javascript:;"> Devis</a>
+                                            <ul class="sub-menu">
+                                                <li><a href='/devisuser/create'>Demande Devis</a></li>
+                                                <li><a href="/devisuser/index"> Suivre Devis</a></li>
+                                            </ul>                                    
+                                        </li>         
+        
+                                        <li>
+                                            <a href="javascript:;">Rendez-vous</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="/rendezvoususer/create">Demande rendez-vous</a></li>
+                                                <li><a href="/rendezvoususer/index">Suivre rendez-vous</a></li>
+                                                               
+                                            </ul>
+                                        </li>
+        
+                                        <li>
+                                            <a href="javascript:;">Etude Projet</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="/projetuser/create">Demande Etude Projet</a></li>
+                                                <li><a href="/projetuser/index">Suivre Demande</a></li>
+                                            </ul>
+                                        </li>
+                                                                      
+                                    </ul>
+                                </div>           
                                   <li>
-                                      <a href="javascript:;">Consultation</a>
-                                      <ul class="sub-menu">
-                                          <li><a href="consultationuser/create">Demande consultation</a></li>
-                                          <li><a href="consultationuser/index">Suivre consultation</a></li>
-                                      </ul>                                    
-                                  </li> 
-                                  
-                                  <li>
-                                      <a href="javascript:;"> Devis</a>
-                                      <ul class="sub-menu">
-                                          <li><a href="">Demande Devis</a></li>
-                                          <li><a href=""> Suivre Devis</a></li>
-                                      </ul>                                    
-                                  </li>         
-  
-                                  <li>
-                                      <a href="javascript:;">Rendez-vous</a>
-                                      <ul class="sub-menu">
-                                          <li><a href="">Demande rendez-vous</a></li>
-                                          <li><a href="">Suivre rendez-vous</a></li>
-                                                         
-                                      </ul>
-                                  </li>
-  
-                                  <li>
-                                      <a href="javascript:;">Etude Projet</a>
-                                      <ul class="sub-menu">
-                                          <li><a href="">Demande Etude Projet</a></li>
-                                          <li><a href="">Suivre Demande</a></li>
-                                      </ul>
+                                    <a *ngIf="loggedIn()"(click)="logout()" >Log Out</a>
                                   </li>
                                                                 
                               </ul>
@@ -263,15 +274,16 @@
                     
                             <div class="form-group">
                               <label for="body">Lieu:</label>
-                              <input 
+                              <select 
                     
-                              id="Lieu" 
                               type="text" 
                               formControlName="Lieu"
-                    
                               class="form-control"
                               [ngClass]="{ 'is-invalid': submitted && f['Lieu'].errors }"
                               > 
+                              <option *ngFor="let Lieu of Lieu" [value]="Lieu" >{{Lieu}}</option>
+                              </select>
+
                               <div *ngIf="submitted && f['Lieu'].errors" class="invalid-feedback">
                                   <div *ngIf="f['Lieu'].errors['required']" class="alert alert-danger">Date is required</div>
                                   <div *ngIf="f['Lieu'].errors['Date']"class="alert alert-danger">Date is invalid</div>
@@ -282,13 +294,13 @@
                           </div>
                     
                           <div class="form-group">
-                              <label for="body">Sujet:</label>
+                              <label for="body" >Sujet:</label>
                               <input 
                     
                               id="sujet" 
                               type="text" 
                               formControlName="sujet"
-                    
+                              pattern="[A-Za-z]"
                               class="form-control"
                               [ngClass]="{ 'is-invalid': submitted && f['sujet'].errors }"> 
                               <div *ngIf="submitted && f['sujet'].errors" class="invalid-feedback">
@@ -298,7 +310,18 @@
                                
                              
                           </div>
-           
+                          <div class="form-group"hidden>
+                            <input 
+                            
+                            type="text" 
+                            formControlName="user"
+                            class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f['user'].errors }"> 
+                            
+                             
+                           
+                        </div>
+         
                        
                             <button class="btn btn-success" type="submit"   >Create</button>
                             <br>

@@ -6,6 +6,7 @@ import Validation from '../utils/validation';
 import { Router } from '@angular/router';
 import { resolveSanitizationFn } from '@angular/compiler/src/render3/view/template';
 import jwtDecode from 'jwt-decode';
+import { UserService } from 'src/app/services/user.service';
 
 
 
@@ -23,6 +24,7 @@ export class LoginComponent implements OnInit {
    
     email: new FormControl('',[Validators.required]),
     password: new FormControl('',[Validators.required]),
+    
 
    
 
@@ -36,11 +38,12 @@ export class LoginComponent implements OnInit {
     lastname: '',
     email: '',
     roles:'',
+    status:'',
   
   }
-
+  users: user[] = [];
   submitted = false;
-  constructor(private formBuilder: FormBuilder , private jwtService:JwtService,public router: Router) {}
+  constructor(private formBuilder: FormBuilder , private jwtService:JwtService,public router: Router,private userService:UserService) {}
   ngOnInit(): void {
     this.form = this.formBuilder.group(
       {
@@ -99,12 +102,21 @@ export class LoginComponent implements OnInit {
           this .router.navigate(['/admin']);
 
         }
-        else   {
+        else if ( this.data.roles=='user' && this.data.status=='en attente')  {
+          alert('you have not accepted again')
+          localStorage.removeItem('access_token');
+         }
+         
+         else if ( this.data.roles=='user' && this.data.status=='accepter')  {
           this .router.navigate(['/user']);
+
          }
     
      
-      })
+      },
+      (error) => {
+        alert('credentials invalide '); // handle login failed here. 
+    })
 
 
 
@@ -118,5 +130,35 @@ export class LoginComponent implements OnInit {
     this.submitted = false;
     this.form.reset();
   }
+
+  user1:any ={
+    valid :true,
+    status:"accepter"
+
+  }
+  user2:any ={
+    valid :false,
+    status:"refuser"
+
+  }
+
+  user3:any ={
+    valid :false,
+    status:"archiver"
+
+  }
+
+  validate(id: any) {
+    this.userService.update(id, this.user1).subscribe((res:any) => {
+      this.ngOnInit()
+ })
+  }
+
+  archiver(id: any) {
+    this.userService.update(id, this.user3).subscribe((res:any) => {
+      this.ngOnInit()
+ })
+  }
+
 
 }

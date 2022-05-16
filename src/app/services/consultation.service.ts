@@ -31,8 +31,8 @@ export class ConsultationService {
  }
 
   find(id:string): Observable<consultation> {
+  
     return this.http.get<consultation>(AUTH_API + 'consultations/' + id)
-   
   }
 
   create(data: any): Observable<consultation> {
@@ -46,7 +46,7 @@ export class ConsultationService {
   
   }
   
-  update(id:string, consultation:consultation): Observable<consultation> {
+  update(id:string, consultation): Observable<consultation> {
     return this.http.put<consultation>( AUTH_API + 'consultations/' + id, JSON.stringify(consultation),this.httpOptions)
    
   

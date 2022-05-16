@@ -5,6 +5,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { souscategorie } from 'src/app/models/souscategorie.model';
 import {SouscategorieService } from "../../../services/souscategorie.service";
+import { categorie } from 'src/app/models/categorie.model';
+import { CategorieService } from 'src/app/services/categorie.service';
 
 @Component({
   selector: 'app-createproduit',
@@ -18,17 +20,28 @@ export class CreateproduitComponent implements OnInit {
  imageSrc: string = '';
  url: any; //Angular 11, for stricter type
   products: product[] = [];
+  categories: categorie[] = [];
+
   souscategories: souscategorie[] = [];
   souscategorie={
     Titre:'',
     id: '',
   }
-
-  constructor(private produitService:ProduitService, private router: Router,private souscategorieService:SouscategorieService,    private route: ActivatedRoute,
+  categorie={
+    Name:'',
+    id: '',
+  }
+  constructor(private produitService:ProduitService, private router: Router,private souscategorieService:SouscategorieService,   
+     private route: ActivatedRoute,private categorieService:CategorieService,
 
     ) { }
 
     ngOnInit(): void {
+
+      this.categorieService.getAllData().subscribe((data: categorie[])=>{
+        this.categories = data;
+        console.log(this.categories);
+      })  
 
       this.souscategorieService.getAllData().subscribe((data: souscategorie[])=>{
         this.souscategories = data;
@@ -45,6 +58,9 @@ export class CreateproduitComponent implements OnInit {
        // fileSource: new FormControl('', [Validators.required]),
         Titre:new FormControl('',[Validators.required]),
         souscategorie:new FormControl('',[Validators.required]),
+        Name:new FormControl('',[Validators.required]),
+        categorie: new FormControl('', Validators.required),
+
 
       });
 
@@ -124,6 +140,7 @@ onFilePicked(event: Event) {
    formData.append('qte', this.form.value.qte)
    formData.append('Titre', this.form.value.Titre)
    formData.append('souscategorie', this.form.value.souscategorie)
+   formData.append('categorie', this.form.value.categorie)
 
 
 console.log(this.form.value);

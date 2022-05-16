@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-board-user',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoardUserComponent implements OnInit {
 
-  constructor() { }
+  constructor(public router: Router) { }
 
   ngOnInit(): void {
   }
-
+  logout() {
+    localStorage.removeItem('access_token');
+    this.router.navigate(['/login']);
+  }
+  
+   loggedIn(){
+    return localStorage.getItem('access_token') ;
+  }
 }

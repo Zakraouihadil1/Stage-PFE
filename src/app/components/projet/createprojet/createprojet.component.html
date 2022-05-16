@@ -331,7 +331,7 @@
         </div>
         <div class="form-group form-check">
 
-            <input type="checkbox" formControlName="M1" id="M1" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && f['M1'].errors }" />
+            <input type="checkbox" formControlName="M1"  id="M1" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && f['M1'].errors }" />
             <label for="M1" class="form-check-label">M1</label>
             <div *ngIf="submitted && f['M1'].errors" class="invalid-feedback">
                 <div *ngIf="f['M1'].errors['required']" class="alert alert-danger">Matiere premiere is required</div>

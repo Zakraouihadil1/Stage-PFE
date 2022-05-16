@@ -7,8 +7,11 @@ export class product{
     file?:string;
     fileSource?:string;
     qte?: any;
-    prixuht?:any;
+    prixuht:any;
     souscategorie?:any;
+    categorie?:any;
+    valid?:boolean;
+    status?:string;
    
 
      

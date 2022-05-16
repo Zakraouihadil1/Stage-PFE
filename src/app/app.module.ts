@@ -14,7 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 /* Angular Flex Layout */
 import { FlexLayoutModule } from "@angular/flex-layout";
 /* Components */
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { HttpClientModule, } from '@angular/common/http';
 import { IndexComponent } from './components/gestion-user/index/index.component';
 import { ViewComponent } from './components/gestion-user/view/view.component';
@@ -82,6 +82,11 @@ import { DevisusercreateComponent } from './components/devisuser/devisusercreate
 import { DevisuserviewComponent } from './components/devisuser/devisuserview/devisuserview.component';
 import { DevisindexComponent } from './components/devis/devisindex/devisindex.component';
 import { DeviseditComponent } from './components/devis/devisedit/devisedit.component';
+import { CartComponent } from './components/cart/cart.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FilterPipe } from './shared/filter.pipe';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+
 
 
 
@@ -154,7 +159,10 @@ import { DeviseditComponent } from './components/devis/devisedit/devisedit.compo
     DevisuserviewComponent,
     DevisindexComponent,
     DeviseditComponent,
-    
+    CartComponent,
+    HeaderComponent,
+    CheckoutComponent,
+  //  FilterPipe,
   ],
   imports: [
     BrowserModule,
@@ -165,6 +173,7 @@ import { DeviseditComponent } from './components/devis/devisedit/devisedit.compo
     FormsModule,
     FlexLayoutModule,
     HttpClientModule,
+  Ng2SearchPipeModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: function  tokenGetter() {

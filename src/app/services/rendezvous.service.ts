@@ -28,6 +28,11 @@ export class RendezvousService {
     return this.http.get<rendezvous[]>(AUTH_API+'rendezvous')
  }
 
+ findbyuserid(user:string):Observable<any>{
+  return this.http.get<rendezvous[]>(AUTH_API+'rendezvous/user/'+user)
+
+ }
+
  find(id:string): Observable<rendezvous> {
   return this.http.get<rendezvous>(AUTH_API + 'rendezvous/' + id)
  
@@ -38,7 +43,7 @@ delete(id:string){
 
 }
 
-update(id:string, rendezvous:rendezvous): Observable<rendezvous> {
+update(id:string, rendezvous): Observable<rendezvous> {
   return this.http.put<rendezvous>( AUTH_API + 'rendezvous/' + id, JSON.stringify(rendezvous),this.httpOptions)
  
 

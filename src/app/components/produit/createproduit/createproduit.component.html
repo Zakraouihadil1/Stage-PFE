@@ -289,23 +289,25 @@
                                 
       <form [formGroup]="form" (ngSubmit)="submit()" >
 
+
         <div class="form-group">
 
-        <label>Titre</label>
-        <select
-        [(ngModel)]="souscategorie.Titre"
-  
-          type="text"
-          formControlName="Titre"
-          class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && f['Titre'].errors }"
-        >
-        <option *ngFor="let souscategorie of souscategories" >{{souscategorie.Titre}}</option>
-</select>
-</div>
+            <label>Categorie</label>
+            <select
+            [(ngModel)]="categorie.id"
+        
+              type="text"
+              formControlName="categorie"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f['categorie'].errors }"
+            >
+            <option *ngFor="let categorie of categories" value="{{categorie.id}}">{{categorie.Name}}</option>
+        </select>
+        </div>
+
 <div class="form-group">
 
-    <label>Titre</label>
+    <label>SousCategorie</label>
     <select
     [(ngModel)]="souscategorie.id"
 
@@ -314,7 +316,7 @@
       class="form-control"
       [ngClass]="{ 'is-invalid': submitted && f['souscategorie'].errors }"
     >
-    <option *ngFor="let souscategorie of souscategories" >{{souscategorie.id}}</option>
+    <option *ngFor="let souscategorie of souscategories" value="{{souscategorie.id}}">{{souscategorie.Titre}}</option>
 </select>
 </div>
 
@@ -350,9 +352,7 @@
                   
        </div>
 
-   <!--
-       
-   -->    <div class="form-group">
+       <div class="form-group">
           <label for="body">Image:</label>
           <input type="file"
                 onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])"

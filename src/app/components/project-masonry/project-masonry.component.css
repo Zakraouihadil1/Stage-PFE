@@ -1,0 +1,40 @@
+.container1 {
+    width: 20rem;
+    height: 100%;
+    margin: 0 1rem;
+    position: relative;
+  }
+  .searchbar {
+    font-size: 2.4rem;
+    width: 25rem;
+    height: 2rem;
+    border: none;
+    outline: none;
+    border-radius: 10rem;
+    padding: 2rem;
+    transition: all 0.1s;
+    transition-delay: 0.1s;
+  }
+  .searchbar:hover {
+    width: 27rem;
+    height: 5rem;
+  }
+  .button {
+    height: 2rem;
+    position: absolute;
+    top: 1.5rem;
+    right: 1rem;
+    transition: all 0.1s;
+    transition-delay: 0.1s;
+  }
+  .button:hover {
+    cursor: pointer;
+  }
+  .searchbar:hover + .button {
+    height: 2.5rem;
+    top: 1.8rem;
+    right: 0;
+  }
+  .searchbar::placeholder {
+    opacity: 0.3;
+  }

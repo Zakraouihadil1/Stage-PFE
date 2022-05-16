@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {user} from "../../../models/user.model";
 import { UserService } from "../../../services/user.service";
 import { AbstractControl, FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import jwtDecode from 'jwt-decode';
 
 
 
@@ -13,9 +14,12 @@ import { AbstractControl, FormControl, FormBuilder, FormGroup, Validators } from
 })
 export class ViewComponent implements OnInit {
 
+
+  
   id!: string;
 
-
+  token:any;
+  data:any;
   form: FormGroup = new FormGroup({
     firstname: new FormControl('',[Validators.required]),
     lastname: new FormControl('',[Validators.required]),
@@ -51,6 +55,11 @@ export class ViewComponent implements OnInit {
    * @return response()
    */
   ngOnInit(): void {
+
+
+    this.token = localStorage.getItem('access_token');
+
+    this.user = jwtDecode(this.token);
     this.id = this.route.snapshot.params['userId'];
          
     this.userService.find(this.id).subscribe((data: user)=>{

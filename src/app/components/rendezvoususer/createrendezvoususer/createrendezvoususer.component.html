@@ -259,21 +259,38 @@
                   
                   
                             <div class="form-group">
-                              <label for="body">Lieu:</label>
-                              <input 
+                                <label for="body">Lieu:</label>
+                                <select 
+                      
+                                type="text" 
+                                formControlName="Lieu"
+                                class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f['Lieu'].errors }"
+                                > 
+                                <option *ngFor="let Lieu of Lieu" [value]="Lieu" >{{Lieu}}</option>
+                                </select>
+  
+                                <div *ngIf="submitted && f['Lieu'].errors" class="invalid-feedback">
+                                    <div *ngIf="f['Lieu'].errors['required']" class="alert alert-danger">Date is required</div>
+                                    <div *ngIf="f['Lieu'].errors['Date']"class="alert alert-danger">Date is invalid</div>
+                                  </div>
+                                 
+                               
+                                 
+                            </div>
                   
-                              id="Lieu" 
-                              type="text" 
-                              formControlName="Lieu"
-                              class="form-control"
-                              [ngClass]="{ 'is-invalid': submitted && f['Lieu'].errors }"> 
-                              <div *ngIf="submitted && f['Lieu'].errors" class="invalid-feedback">
-                                  <div *ngIf="f['Lieu'].errors['required']" class="alert alert-danger">Lieu is required</div>
-                                  <div *ngIf="f['Lieu'].errors['Date']"class="alert alert-danger">Lieu is invalid</div>
-                              </div>            
-                          </div>
-                  
-                       
+                          <div class="form-group"hidden>
+                            <input 
+                            
+                            type="text" 
+                            formControlName="user"
+                            class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f['user'].errors }"> 
+                            
+                             
+                           
+                        </div>
+         
                             <button class="btn btn-success" type="submit"   >Create</button>
                             <br>
                             <br>

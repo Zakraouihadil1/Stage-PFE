@@ -18,7 +18,8 @@ export class DevisuserviewComponent implements OnInit {
       Titre: new FormControl('', Validators.required),
       Total: new FormControl('', Validators.required),
       Quantity: new FormControl('', Validators.required),
-    
+      status: new FormControl('', Validators.required),
+
 
   });
 

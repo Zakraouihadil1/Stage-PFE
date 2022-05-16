@@ -80,6 +80,10 @@ import { DevisuserviewComponent } from './components/devisuser/devisuserview/dev
 import { DevisindexComponent } from './components/devis/devisindex/devisindex.component';
 import { DeviseditComponent } from './components/devis/devisedit/devisedit.component';
 
+import { CartComponent } from './components/cart/cart.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+
+
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/home' },
   { path: 'user/index', component: IndexComponent },
@@ -169,19 +173,14 @@ const routes: Routes = [
   { path: 'projectCa', component: ProjectCarousalComponent } ,
   { path: 'projectC1', component: ProjectClassic1Component } ,
   { path: 'projectC2', component: ProjectClassic2Component } ,
-  { path: 'projectD', component: ProjectDetailComponent } ,
+  { path: 'projectD/:productId/view', component: ProjectDetailComponent } ,
   { path: 'projectG', component: ProjectGridComponent } ,
   { path: 'projectM', component: ProjectMasonryComponent } ,
-  { path: 'services', component: ServicesComponent } 
+  { path: 'services', component: ServicesComponent } ,
 
-
-
-
-
-
-
-
+  { path: 'cart', component: CartComponent } ,
   
+  { path: 'checkout', component:CheckoutComponent } ,
 
 
 ];

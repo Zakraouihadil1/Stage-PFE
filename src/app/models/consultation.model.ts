@@ -7,6 +7,10 @@ export class consultation{
     Lieu?:string;
     sujet?:string;
     user?:any;
+    valid?:boolean;
+    status?:string;
+    
+    
    
 
 }

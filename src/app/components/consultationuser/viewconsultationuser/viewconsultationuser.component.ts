@@ -28,12 +28,13 @@ export class ViewconsultationuserComponent implements OnInit {
     Date: new FormControl('',[Validators.required]),
     Lieu: new FormControl('',[Validators.required]),
     sujet: new FormControl('',[Validators.required]),
-    
+    status: new FormControl('',[Validators.required]),
+
 
   });
 
   constructor(
-    private consultationService:ConsultationService,     private route: ActivatedRoute,  private userService:UserService, 
+    private consultationService:ConsultationService,private route: ActivatedRoute,  private userService:UserService, 
     private router: Router
    ) { }
      
@@ -53,5 +54,13 @@ export class ViewconsultationuserComponent implements OnInit {
     this.consultationService.find(this.id).subscribe((data: consultation)=>{
       this.consultation = data;
     });
+  }
+  logout() {
+    localStorage.removeItem('access_token');
+    this.router.navigate(['/login']);
+  }
+  
+   loggedIn(){
+    return localStorage.getItem('access_token') ;
   }
 }

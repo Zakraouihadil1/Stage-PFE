@@ -41,7 +41,7 @@ export class CreatecategorieComponent implements OnInit {
     else {
       this.categorieService.create(this.form.value).subscribe((res:any) => {
         alert('Categorie created successfully!');
-        this.router.navigateByUrl('rendezvous/index');
+        this.router.navigateByUrl('categorie/index');
    })
     }
     

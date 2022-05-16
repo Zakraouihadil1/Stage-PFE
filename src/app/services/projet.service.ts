@@ -21,7 +21,10 @@ export class ProjetService {
   getAllData(): Observable<any> {
     return this.http.get<projet[]>(AUTH_API+'projet')
  }
+ findbyuserid(user:string):Observable<any>{
+  return this.http.get<projet[]>(AUTH_API+'projet/user/'+user)
 
+ }
   find(id:string): Observable<projet> {
     return this.http.get<projet>(AUTH_API + 'projet/' + id)
    

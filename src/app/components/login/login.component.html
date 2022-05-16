@@ -1,6 +1,7 @@
 
   
-<!-- HEADER START -->
+
+     <!-- HEADER START -->
   <header class="site-header header-style-1">
     <div class="top-bar bg-gray">
         <div class="container">
@@ -24,7 +25,7 @@
                 <div class="logo-header">
                     <div class="logo-header-inner logo-header-one">
                         <a href="index.html">
-                            <img src="assets/images/logo-light.png" alt="" />
+                            <img src="assets/images/logo Mafi-1.png" alt="" />
                         </a>
                     </div>
                 </div>
@@ -35,7 +36,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                 
+                    <!-- ETRA Nav -->
+                    <div class="extra-nav">
+                       
+                        <div class="extra-cell">
+                            <a href="#" class="contact-slide-show"><i class="fa fa-angle-left arrow-animation"></i></a>
+                        </div>                                
+                    </div>
+                    <!-- ETRA Nav -->
+
                     <!-- Contact Nav -->                            
                      <div class="contact-slide-hide " style="background-image:url(assets/images/background/bg-5.png)"> 
                         <div class="contact-nav">
@@ -83,92 +92,53 @@
                              </div>
                         </div> 
                     </div>                               
-                                                                                                                        
+                    <!-- SITE Search -->
+                    <div id="search"> 
+                        <span class="close"></span>
+                        <form role="search" id="searchform" action="/search" method="get" class="radius-xl">
+                            <div class="input-group">
+                                <input value="" name="q" type="search" placeholder="Type to search"/>
+                                <span class="input-group-btn"><button type="button" class="search-btn"><i class="fa fa-search arrow-animation"></i></button></span>
+                            </div>   
+                        </form>
+                    </div>                                                                                                          
                     <!-- MAIN Vav -->
                     <div class="header-nav navbar-collapse collapse">
                         <ul class=" nav navbar-nav">
                             <li class="active">
-                                <a href="javascript:;">Home</a>
-                             <ul class="sub-menu">
-
-                                    <li>
-                                        <a href="index.html">Home-1</a>
-                                    </li>
-                                    <li>
-                                        <a href="index-2.html">Home-2</a>
-                                    </li>
-                                    <li>
-                                        <a href="index-3.html">Home-3 boxed style</a>
-                                    </li> 
-                                    <li>
-                                        <a href="index-4.html">Home-4</a>
-                                    </li>                                          
-                                </ul>                                                    
+                                <a href="/home">Home</a>
+                                                                               
                             </li>
 
                             <li>
-                                <a href="../about/about.component.html">About us</a>
+                                <a href="/about">About us</a>
                             </li> 
                             <li>
-                                <a href="services.html">Services</a>
+                                <a href="/services">Services</a>
                             </li> 
                             <li>
-                                <a href="javascript:;">Pages</a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="javascript:;">Blog</a>
+                                <a href="/projectM">Produits</a>
+                                <!-- <ul class="sub-menu">
+                                    <li *ngFor="let categorie of categories">
+                                        <a href="javascript:;">{{categorie.Name}}</a>
                                         <ul class="sub-menu has-child">
-                                            <li><a href="blog-grid.html">Blog Grid</a></li>
-                                            <li><a href="blog-listing.html">Blog Listing</a></li>
-                                            <li><a href="blog-masonry.html">Blog Masonry</a></li>
+                                            <li *ngFor="let souscategorie of souscategories "><a href="blog-grid.html">{{souscategorie.Titre}}</a></li>
+                                           
                                         </ul>
                                     </li>                                        
-                                    <li>
-                                        <a href="faq.html">FAQ</a>
-                                    </li>
-                                    <li>
-                                        <a href="error-404.html">Error 404</a>
-                                    </li>                                            
-                                    <li>
-                                        <a href="contact-1.html">Contact us</a>
-                                    </li>
-                                </ul>
+                                   
+                                </ul> -->
                             </li>                                                                                                                                               
                             <li>
-                                <a href="javascript:;">Post detail</a>
-                                <ul class="sub-menu">
-                                    <li><a href="post-image.html">Post Image</a></li>
-                                    <li><a href="post-gallery.html">Post Gallery</a></li>
-                                    <li><a href="post-video.html">Post Video</a></li>
-                                    <li><a href="post-right-sidebar.html">Post Right Sidebar</a></li>                                        
-                                </ul>                                    
-                            </li>                                         
+                                <a href="/login">Login</a>
+                            </li>
+                            <li>
+                                <a href="/register">Registre</a>
+                            </li>                                   
 
                             <li>
-                                <a href="javascript:;">Projects</a>
-                                <ul class="sub-menu">
-                                    <li><a href="project-grid.html">Project Grid</a></li>
-                                    <li><a href="project-masonry.html">Project Masonry</a></li>
-                                    <li><a href="project-carousel.html">Project Carousel</a></li>
-                                    <li><a href="project-classic.html">Project Classic-1</a></li>
-                                    <li><a href="project-classic2.html">Project Classic-2</a></li>
-                                    <li><a href="project-detail.html">Project Detail</a></li>                                        
-                                </ul>
-                            </li>
-                            <li class="submenu-direction">
-                                <a href="javascript:;">Shortcodes</a>
-                                <ul class="sub-menu">
-                                    <li><a href="accordian.html">Accordian</a></li>
-                                    <li><a href="button.html">Button</a></li>
-                                    <li><a href="icon_box.html">Icon box style</a></li>
-                                    <li><a href="list_group.html">List group</a></li>
-                                    <li><a href="modal_popup.html">Modal popup</a></li>
-                                    <li><a href="tabs.html">Tabs</a></li>
-                                    <li><a href="table.html">Table</a></li>
-                                    <li><a href="video.html">Video  </a></li>
-                                    <li><a href="icon-font.html">Icon Font </a></li> 
-                                </ul>                                    
-                            </li>                                
+                                <a href="/contact">Contact us</a>
+                            </li>                         
                         </ul>
                     </div>
                     
@@ -178,9 +148,11 @@
 </header>
 <!-- HEADER END -->
 
+<br>
+<br>
 <div class="  card m-3 col-md-4"  >
   <h2 style="font-weight: bold;" >Login..</h2>
-  <div class="card-body">
+  <div class="card-body" style="margin-left: 100px; ">
 
 
 <div class="login-form">
@@ -197,8 +169,9 @@
         [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
       />
       <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
-        <div *ngIf="f['email'].errors['required']" class="alert alert-danger">Email is required</div>
-        <div *ngIf="f['email'].errors['email']"class="alert alert-danger">Email is invalid</div>
+        <div *ngIf="f['email'].errors['required']" style="color: red;font-weight: bolder;">Email is required!</div>
+        <div *ngIf="f['email'].errors['email']" style="color: red;font-weight: bolder;">Email is invalid!</div>
+        
       </div>
     </div>
     <div class="form-group col-9">
@@ -214,12 +187,12 @@
 
       
       <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
-        <div *ngIf="f['password'].errors['required']" class="alert alert-danger">Password is required</div>
-        <div *ngIf="f['password'].errors['minlength']" class="alert alert-danger">
-          Password must be at least 6 characters
+        <div *ngIf="f['password'].errors['required']"  style="color: red;font-weight: bolder;">Password is required!</div>
+        <div *ngIf="f['password'].errors['minlength']"  style="color: red;font-weight: bolder;">
+          Password must be at least 6 characters!
         </div>
-        <div *ngIf="f['password'].errors['maxlength']" class="alert alert-danger" >
-          Password must not exceed 40 characters
+        <div *ngIf="f['password'].errors['maxlength']"  style="color: red;font-weight: bolder;" >
+          Password must not exceed 40 characters!
         </div>
       </div>
     </div>
@@ -229,7 +202,7 @@
 
    
     <div class="form-group col-9">
-      <button type="submit" class="btn btn-primary" >Login</button><br><br>
+      <button type="submit" class="btn btn-primary"  >Login</button><br><br>
       
       <button
         type="button"
@@ -250,7 +223,6 @@
       <a [routerLink]="['/home']"  style="font-weight:bold; color: black; text-decoration: none;">  Back to homepage </a>
           </div>
    </div>
-
   </form>
   
 </div>

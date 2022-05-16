@@ -1,5 +1,5 @@
-<!-- HEADER START -->
-<header class="site-header header-style-1">
+  <!-- HEADER START -->
+  <header class="site-header header-style-1">
     <div class="top-bar bg-gray">
         <div class="container">
             <div class="row">
@@ -22,7 +22,7 @@
                 <div class="logo-header">
                     <div class="logo-header-inner logo-header-one">
                         <a href="index.html">
-                            <img src="assets/images/logo-light.png" alt="" />
+                            <img src="assets/images/logo Mafi-1.png" alt="" />
                         </a>
                     </div>
                 </div>
@@ -33,7 +33,19 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                 
+                    <!-- ETRA Nav -->
+                    <div class="extra-nav">
+                        <div class="extra-cell">											
+                            <a href="#search">
+                                <i class="fa fa-search"></i>
+                            </a>
+                        </div>
+                        <div class="extra-cell">
+                            <a href="#" class="contact-slide-show"><i class="fa fa-angle-left arrow-animation"></i></a>
+                        </div>                                
+                    </div>
+                    <!-- ETRA Nav -->
+
                     <!-- Contact Nav -->                            
                      <div class="contact-slide-hide " style="background-image:url(assets/images/background/bg-5.png)"> 
                         <div class="contact-nav">
@@ -81,79 +93,53 @@
                              </div>
                         </div> 
                     </div>                               
-                                                                                                                        
+                    <!-- SITE Search -->
+                    <div id="search"> 
+                        <span class="close"></span>
+                        <form role="search" id="searchform" action="/search" method="get" class="radius-xl">
+                            <div class="input-group">
+                                <input value="" name="q" type="search" placeholder="Type to search"/>
+                                <span class="input-group-btn"><button type="button" class="search-btn"><i class="fa fa-search arrow-animation"></i></button></span>
+                            </div>   
+                        </form>
+                    </div>                                                                                                          
                     <!-- MAIN Vav -->
                     <div class="header-nav navbar-collapse collapse">
                         <ul class=" nav navbar-nav">
                             <li class="active">
-                                <a href="javascript:;">Home</a>
-                             <ul class="sub-menu">
-
-                                    <li>
-                                        <a href="index.html">Home-1</a>
-                                    </li>
-                                    <li>
-                                        <a href="index-2.html">Home-2</a>
-                                    </li>
-                                    <li>
-                                        <a href="index-3.html">Home-3 boxed style</a>
-                                    </li> 
-                                    <li>
-                                        <a href="index-4.html">Home-4</a>
-                                    </li>                                          
-                                </ul>                                                    
+                                <a href="/home">Home</a>
+                                                                               
                             </li>
 
                             <li>
-                                <a href="../about/about.component.html">About us</a>
+                                <a href="/about">About us</a>
                             </li> 
                             <li>
-                                <a href="services.html">Services</a>
+                                <a href="/services">Services</a>
                             </li> 
                             <li>
-                                <a href="javascript:;">Pages</a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="javascript:;">Blog</a>
+                                <a href="/projectM">Produits</a>
+                                <!-- <ul class="sub-menu">
+                                    <li *ngFor="let categorie of categories">
+                                        <a href="javascript:;">{{categorie.Name}}</a>
                                         <ul class="sub-menu has-child">
-                                            <li><a href="blog-grid.html">Blog Grid</a></li>
-                                            <li><a href="blog-listing.html">Blog Listing</a></li>
-                                            <li><a href="blog-masonry.html">Blog Masonry</a></li>
+                                            <li *ngFor="let souscategorie of souscategories "><a href="blog-grid.html">{{souscategorie.Titre}}</a></li>
+                                           
                                         </ul>
                                     </li>                                        
-                                    <li>
-                                        <a href="faq.html">FAQ</a>
-                                    </li>
-                                    <li>
-                                        <a href="error-404.html">Error 404</a>
-                                    </li>                                            
-                                    <li>
-                                        <a href="contact-1.html">Contact us</a>
-                                    </li>
-                                </ul>
+                                   
+                                </ul> -->
                             </li>                                                                                                                                               
                             <li>
-                                <a href="javascript:;">Post detail</a>
-                                <ul class="sub-menu">
-                                    <li><a href="post-image.html">Post Image</a></li>
-                                    <li><a href="post-gallery.html">Post Gallery</a></li>
-                                    <li><a href="post-video.html">Post Video</a></li>
-                                    <li><a href="post-right-sidebar.html">Post Right Sidebar</a></li>                                        
-                                </ul>                                    
-                            </li>                                         
+                                <a href="/login">Login</a>
+                            </li>
+                            <li>
+                                <a href="/registre">Registre</a>
+                            </li>                                   
 
                             <li>
-                                <a href="javascript:;">Projects</a>
-                                <ul class="sub-menu">
-                                    <li><a href="project-grid.html">Project Grid</a></li>
-                                    <li><a href="project-masonry.html">Project Masonry</a></li>
-                                    <li><a href="project-carousel.html">Project Carousel</a></li>
-                                    <li><a href="project-classic.html">Project Classic-1</a></li>
-                                    <li><a href="project-classic2.html">Project Classic-2</a></li>
-                                    <li><a href="project-detail.html">Project Detail</a></li>                                        
-                                </ul>
-                            </li>
-                                                  
+                                <a href="/contact">Contact us</a>
+                            </li>                         
                         </ul>
                     </div>
                     
@@ -162,7 +148,6 @@
     </div>
 </header>
 <!-- HEADER END -->
-
 
  <!-- OUR PROJECT START -->
  <div class="section-full mobile-page-padding p-t80 p-b30 square_shape2" >
@@ -184,53 +169,62 @@
                     <div class=" col-md-3 col-sm-6 ">
                       <div class="bg-gray p-a60">
                           <div class="header-nav navbar-collapse ">
-                              <ul class=" nav navbar-nav  text-uppercase">
+                            <ul class=" nav navbar-nav  text-uppercase">
                                   
                                 <li>
-                                    <a href="/user">Dashbord User</a>
+                                    <a href="/user">Dashboard user</a>
                                    
                                   </li>  
                                   
-  
+                                  <div class="header-nav navbar-collapse ">
+                                    <ul class=" nav navbar-nav  text-uppercase">
+                                        
+        
+                                        <li>
+                                          <a href="/profile">Profile</a>
+                                         
+                                        </li>  
+                                        
+        
+                                          
+                                          
+                                        <li>
+                                            <a href="javascript:;">Consultation</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="/consultationuser/create">Demande consultation</a></li>
+                                                <li><a href="/consultationuser/index">Suivre consultation</a></li>
+                                            </ul>                                    
+                                        </li> 
+                                        
+                                        <li>
+                                            <a href="javascript:;"> Devis</a>
+                                            <ul class="sub-menu">
+                                                <li><a href='/devisuser/create'>Demande Devis</a></li>
+                                                <li><a href="/devisuser/index"> Suivre Devis</a></li>
+                                            </ul>                                    
+                                        </li>         
+        
+                                        <li>
+                                            <a href="javascript:;">Rendez-vous</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="/rendezvoususer/create">Demande rendez-vous</a></li>
+                                                <li><a href="/rendezvoususer/index">Suivre rendez-vous</a></li>
+                                                               
+                                            </ul>
+                                        </li>
+        
+                                        <li>
+                                            <a href="javascript:;">Etude Projet</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="/projetuser/create">Demande Etude Projet</a></li>
+                                                <li><a href="/projetuser/index">Suivre Demande</a></li>
+                                            </ul>
+                                        </li>
+                                                                      
+                                    </ul>
+                                </div>           
                                   <li>
-                                    <a href="user/:userId/view">View Account</a>
-                                   
-                                  </li>  
-                                  
-  
-                                    
-                                    
-                                  <li>
-                                      <a href="javascript:;">Consultation</a>
-                                      <ul class="sub-menu">
-                                          <li><a href="consultationuser/create">Demande consultation</a></li>
-                                          <li><a href="consultationuser/index">Suivre consultation</a></li>
-                                      </ul>                                    
-                                  </li> 
-                                  
-                                  <li>
-                                      <a href="javascript:;"> Devis</a>
-                                      <ul class="sub-menu">
-                                          <li><a href="">Demande Devis</a></li>
-                                          <li><a href=""> Suivre Devis</a></li>
-                                      </ul>                                    
-                                  </li>         
-  
-                                  <li>
-                                      <a href="javascript:;">Rendez-vous</a>
-                                      <ul class="sub-menu">
-                                          <li><a href="">Demande rendez-vous</a></li>
-                                          <li><a href="">Suivre rendez-vous</a></li>
-                                                         
-                                      </ul>
-                                  </li>
-  
-                                  <li>
-                                      <a href="javascript:;">Etude Projet</a>
-                                      <ul class="sub-menu">
-                                          <li><a href="">Demande Etude Projet</a></li>
-                                          <li><a href="">Suivre Demande</a></li>
-                                      </ul>
+                                    <a *ngIf="loggedIn()"(click)="logout()" >Log Out</a>
                                   </li>
                                                                 
                               </ul>
@@ -257,9 +251,11 @@
                         <strong>Sujet:</strong>
                         <p>{{ consultation.sujet }}</p>
                     </div>
+                    
+
                     <div>
-                        <strong>User:</strong>
-                        <p>{{ consultation.user.firstname }}</p>
+                        <strong>  Status:</strong>
+                        <p>{{ consultation.status }}</p>
                     </div>
                     </div>
                     

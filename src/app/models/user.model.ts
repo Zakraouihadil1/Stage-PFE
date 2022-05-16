@@ -5,5 +5,6 @@ export class user{
     email?:string;
     password?:string;
     roles?:string;
-
+    status?:string;
+    
 }

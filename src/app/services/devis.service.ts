@@ -27,6 +27,12 @@ export class DevisService {
     return this.http.get<devis[]>(AUTH_API+'devis')
  }
 
+
+ findbyuserid(user:string):Observable<any>{
+  return this.http.get<devis[]>(AUTH_API+'devis/user/'+user)
+
+ }
+
  find(id:string): Observable<devis> {
   return this.http.get<devis>(AUTH_API + 'devis/' + id)
  
@@ -42,4 +48,6 @@ update(id:string, devis:devis): Observable<devis> {
  
 
 }
+
+
 }

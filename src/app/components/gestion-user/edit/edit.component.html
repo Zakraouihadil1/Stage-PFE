@@ -287,13 +287,15 @@
                     <!-- COLUMNS 2 -->
                     <div class="  cat-2 col-md-9 col-sm-6 m-b30">
 
-                        <a href="#" routerLink="/user/index" class="btn btn-warning">Back</a>
+                        <!-- <a href="#" routerLink="/profile" class="btn btn-warning">Back</a> -->
   
                         <form [formGroup]="form" (ngSubmit)="submit()" >
                             <div class="form-group">
                                 <label for="body">ID:</label>
                                 <input 
-                                disabled
+                                formControlName="id"
+                                [(ngModel)]="user.id"
+
                                 name="id"
                                 id="id" 
                                 type="text" 

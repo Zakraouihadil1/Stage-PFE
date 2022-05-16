@@ -302,7 +302,17 @@
                                 <label for="Machines"class="form-check-label">Machines</label>
                                           
                             </div> 
-                       
+                            <div class="form-group"hidden>
+                                <input 
+                                
+                                type="text" 
+                                formControlName="user"
+                                class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f['user'].errors }"> 
+                                
+                                 
+                               
+                            </div>
                             <button class="btn btn-success" type="submit"   >Create</button>
                             <br>
                             <br>

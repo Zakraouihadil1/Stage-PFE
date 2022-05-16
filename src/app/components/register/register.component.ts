@@ -4,7 +4,10 @@ import Validation from '../utils/validation';
 import { JwtService } from "../../../app/jwt.service";
 import { user } from 'src/app/models/user.model';
 import { Router } from '@angular/router';
-
+import { categorie } from 'src/app/models/categorie.model';
+import { souscategorie } from 'src/app/models/souscategorie.model';
+import { SouscategorieService } from 'src/app/services/souscategorie.service';
+import { CategorieService } from '../../services/categorie.service';
 
 @Component({
   selector: 'app-register',
@@ -14,6 +17,18 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
 
   Roles: any = ['user'];
+  categories: categorie[] = [];
+  souscategories: souscategorie[] = [];
+
+  categorie={
+Name:'',
+id:'',
+  }
+  souscategorie={
+    Titre:'',
+    id: '',
+  }
+
 
   
   form: FormGroup = new FormGroup({
@@ -37,8 +52,7 @@ export class RegisterComponent implements OnInit {
   }
 
   submitted = false;
-  constructor(private formBuilder: FormBuilder , private jwtService:JwtService, private router: Router
-  ) {}
+  constructor(private formBuilder: FormBuilder , private jwtService:JwtService, private router: Router,private categorieService:CategorieService,private souscategorieService:SouscategorieService) {}
   ngOnInit(): void {
     this.form = this.formBuilder.group(
       {
@@ -67,6 +81,18 @@ export class RegisterComponent implements OnInit {
         validators: [Validation.match('password', 'confirmPassword')]
       }
     );
+
+    this.categorieService.getAllData().subscribe((data: categorie[])=>{
+      this.categories = data;
+      console.log(this.categories);
+    })  
+  
+    this.souscategorieService.getAllData().subscribe((data: souscategorie[])=>{
+      this.souscategories = data;
+      console.log(this.souscategories);
+    })
+
+
   }
   get f(): { [key: string]: AbstractControl } {
     return this.form.controls;
@@ -82,11 +108,11 @@ export class RegisterComponent implements OnInit {
       else {
         this.jwtService.register(this.form.value).subscribe(
           (response:any)  => {
-            alert('REGISTRAITED SUCCESSFULLY !!');
+            alert('REGISTRAITED SUCCESSFULLY Votre demande ça sera accepter dans 24 heures');
             this.router.navigate(['/login']);
          
        },(error:any)  => {
-        alert(' EMAIL DUPLICATED !!');}
+        alert(' Client existe déjà!!');}
        
          )
   

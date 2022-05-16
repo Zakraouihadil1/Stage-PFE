@@ -45,6 +45,7 @@ export class EditprojetComponent implements OnInit {
     M1: new FormControl('',),
     Process: new FormControl('',),
     Machines: new FormControl('',),
+    status: new FormControl('repondu',),
 
      
        });
