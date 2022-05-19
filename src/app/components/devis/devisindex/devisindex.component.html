@@ -226,15 +226,17 @@
                             <thead>
                               <tr>
                                 <th>ID</th>
-                                <th>Quantite</th>
                                 <th>Date</th>
-                                <th>Titre</th>
-                                <th>Total</th>
+
                                 <th>Produit</th>
-                                <th>QuantiteP</th>
+
+                                <th>Quantite</th>
+                                <!-- <th>Titre</th> -->
+                                <th>Total</th>
+                                <!-- <th>QuantiteP</th> -->
                                 <th>User</th>
                                 <th>Status</th>
-                                <th width="200px">Action</th>
+                                <th >Action</th>
 
                               </tr>
                             </thead>
@@ -242,12 +244,13 @@
                                 <tr *ngFor="let devis of devis | filter:term1.c">
                                     <ng-template  [ngIf]="devis.status!='archiver' ">
                                 <td>{{ devis.id }}</td>
-                                <td>{{ devis.Quantity }}</td>
                                 <td>{{ devis.Date }}</td>
-                                <td>{{ devis.Titre }}</td>
-                                <td>{{ devis.Total }}</td>
+
                                 <td>{{ devis.product.name }}</td>
-                                <td>{{ devis.product.qte }}</td>
+                                <td>{{ devis.Quantity }}</td>
+                                <!-- <td>{{ devis.Titre }}</td> -->
+                                <td>{{ devis.Total }}</td>
+                                <!-- <td>{{ devis.product.qte }}</td> -->
                                 <td>{{ devis.user.firstname }}</td>
                                 <td>{{ devis.status}}</td>
 
@@ -255,7 +258,7 @@
                       
                              <td>
                       
-                                  <a *ngIf="devis.status =='en attente'"  (click)="repondre(devis.id)" class="btn btn-info">Repondre</a>
+                                  <a *ngIf="devis.status =='en attente'"  (click)="repondre(devis.id)" [routerLink]="['/devis/', devis.id, 'edit'] " class="btn btn-info">Repondre</a>
                                 
                                   <button type="button" (click)="archiver(devis.id)" class="btn btn-danger"  >Archiver</button>
 

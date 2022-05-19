@@ -226,12 +226,15 @@
                             <thead>
                               <tr>
                                 <th>ID</th>
-                                <th>Quantite</th>
                                 <th>Date</th>
-                                <th>Titre</th>
-                                <th>Total</th>
-                                <th>Produit</th>
-                                <th>QuantiteP</th>
+                                <th >Produit</th>
+                                <th >Quantite</th>
+
+                                <!-- <th>QuantiteP</th> -->
+
+                                <!-- <th>Titre</th> -->
+                                
+                                <!-- <th>Total</th> -->
                                 <th>Status</th>
 
                                 <th>Action</th>
@@ -244,12 +247,17 @@
                                     <ng-template  [ngIf]="devis.status!='archiver' ">
 
                                 <td>{{ devis.id }}</td>
-                                <td>{{ devis.Quantity }}</td>
                                 <td>{{ devis.Date }}</td>
-                                <td>{{ devis.Titre }}</td>
-                                <td>{{ devis.Total }}</td>
                                 <td>{{ devis.product.name }}</td>
-                                <td>{{ devis.product.qte }}</td>
+
+                                <td>{{ devis.Quantity }}</td>
+                                <!-- <td>{{ devis.Titre }}</td> -->
+                                <ng-template [ngIf]="devis.Total!='0'">
+                                    
+                                    <td >{{ devis.Total }}</td>
+
+                                </ng-template>
+                                <!-- <td>{{ devis.product.qte }}</td> -->
                                 <td>{{ devis.status }}</td>
 
 
@@ -324,7 +332,7 @@
                 
           
                 
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                           <label for="body">Titre:</label>
                           <input 
                 
@@ -342,8 +350,28 @@
                            
                          
                            
-                      </div>
+                      </div> -->
                 
+                      <div class="form-group">
+
+                        <label>Produit</label>
+                        <select
+                    
+                          type="text"
+                          formControlName="product"
+                          class="form-control"
+                          [ngClass]="{ 'is-invalid': submitted && f['product'].errors }"
+                        >
+                        <option selected value="" disabled >choisir produit</option>
+                        <option *ngFor="let product of products" value="{{product.id}}">{{product.name}}</option>
+                    </select>
+                    <div *ngIf="submitted && f['product'].errors" class="invalid-feedback">
+                        <div *ngIf="f['product'].errors['required']" class="alert alert-danger">product is required</div>
+                        <div *ngIf="f['product'].errors['product']"class="alert alert-danger">product is invalid</div>
+                      </div>
+                    </div>
+     
+
                       <div class="form-group">
                           <label for="body">Quantite:</label>
                           <input 
@@ -380,25 +408,7 @@
                        
                     </div> -->
 
-                   <div class="form-group">
-
-                        <label>Produit</label>
-                        <select
-                    
-                          type="text"
-                          formControlName="product"
-                          class="form-control"
-                          [ngClass]="{ 'is-invalid': submitted && f['product'].errors }"
-                        >
-                        <option selected value="" disabled >choisir produit</option>
-                        <option *ngFor="let product of products" value="{{product.id}}">{{product.name}}</option>
-                    </select>
-                    <div *ngIf="submitted && f['product'].errors" class="invalid-feedback">
-                        <div *ngIf="f['product'].errors['required']" class="alert alert-danger">product is required</div>
-                        <div *ngIf="f['product'].errors['product']"class="alert alert-danger">product is invalid</div>
-                      </div>
-                    </div>
-     
+                
                     <div class="form-group"hidden>
                         <input 
                         

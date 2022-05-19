@@ -1,6 +1,6 @@
 <div class="page-wraper"> 
        	
-    <!-- HEADER START -->
+       <!-- HEADER START -->
     <header class="site-header header-style-1">
         <div class="top-bar bg-gray">
             <div class="container">
@@ -24,7 +24,7 @@
                     <div class="logo-header">
                         <div class="logo-header-inner logo-header-one">
                             <a href="index.html">
-                                <img src="assets/images/logo-light.png" alt="" />
+                                <img src="assets/images/logo Mafi-1.png" alt="" />
                             </a>
                         </div>
                     </div>
@@ -105,8 +105,8 @@
                                 </div>   
                             </form>
                         </div>                                                                                                          
-                         <!-- MAIN Vav -->
-                         <div class="header-nav navbar-collapse collapse">
+                        <!-- MAIN Vav -->
+                        <div class="header-nav navbar-collapse collapse">
                             <ul class=" nav navbar-nav">
                                 <li class="active">
                                     <a href="/home">Home</a>
@@ -114,14 +114,14 @@
                                 </li>
 
                                 <li>
-                                    <a href="../about/about.component.html">About us</a>
+                                    <a href="/about">About us</a>
                                 </li> 
                                 <li>
                                     <a href="/services">Services</a>
                                 </li> 
                                 <li>
-                                    <a href="javascript:;">Categorie</a>
-                                    <ul class="sub-menu">
+                                    <a href="/projectM">Produits</a>
+                                    <!-- <ul class="sub-menu">
                                         <li *ngFor="let categorie of categories">
                                             <a href="javascript:;">{{categorie.Name}}</a>
                                             <ul class="sub-menu has-child">
@@ -130,13 +130,13 @@
                                             </ul>
                                         </li>                                        
                                        
-                                    </ul>
+                                    </ul> -->
                                 </li>                                                                                                                                               
                                 <li>
-                                    <a href="">Espace User</a>
+                                    <a href="/login">Login</a>
                                 </li>
                                 <li>
-                                    <a href="">Espace Admin</a>
+                                    <a href="/regiter">Registre</a>
                                 </li>                                   
 
                                 <li>
@@ -185,8 +185,12 @@
                     <div class="m-b0">
                         <div class="row">
                             <div class="col-md-4 col-sm-4">
+                                <div class="col-md-12 m-b10">
+                                    <h4 class="text-uppercase font-weight-600 m-b10"><b>Nom Produit</b></h4>
+                                    <p>{{ product.name }}</p>
+                                  </div>
                                 <div class="project-detail-pic m-b30">
-                                    <div class="mt-media">
+                                    <div class="mt-media" style="margin-left: 100px;">
                                       <img src="http://localhost:3000/products/image/{{product.file}}" height="150px"width="150px">                                    </div>
                                 </div>
                             </div>
@@ -213,10 +217,7 @@
                                 <div class="product-block">
                                     <div class="row" >
                                     
-                                      <div class="col-md-12 m-b10">
-                                        <h4 class="text-uppercase font-weight-600 m-b10"><b>Nom Produit</b></h4>
-                                        <p>{{ product.name }}</p>
-                                      </div>
+                                     
                                       <div class="col-md-12 m-b10">
                                         <h4 class="text-uppercase font-weight-600 m-b10"><b>Description</b></h4>
                                         <p>{{ product.Description }}</p>
@@ -236,17 +237,7 @@
                                   </div>
                                 </div>  
                             </div>
-                            <div class="col-md-8">
-                                <div class="mt-box">
-                                    <div class="mt-thum-bx mt-img-overlay1 mt-img-effect yt-thum-box">
-                                        <img src="http://i3.ytimg.com/vi/s3A7AK1K2hc/maxresdefault.jpg" alt="">
-                                        <a href="https://www.youtube.com/watch?v=s3A7AK1K2hc" class="mfp-video play-now">
-                                            <i class="icon fa fa-play"></i>
-                                            <span class="ripple"></span>
-                                        </a>
-                                    </div>
-                                </div>                   	
-                            </div>
+                            
                         </div>
                     </div>                         
                     

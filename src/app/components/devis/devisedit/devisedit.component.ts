@@ -41,7 +41,7 @@ export class DeviseditComponent implements OnInit {
     this.form = new FormGroup({
 
       Date: new FormControl('', [Validators.required]),
-      Titre: new FormControl('', Validators.required),
+      // Titre: new FormControl('', Validators.required),
       Total: new FormControl('', Validators.required),
       Quantity: new FormControl('', Validators.required),
        });

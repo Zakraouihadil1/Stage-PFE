@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { devis } from "../models/devis.model";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {  Observable} from 'rxjs';
+import {  BehaviorSubject, Observable} from 'rxjs';
 const AUTH_API = 'http://localhost:3000/';
 
 
@@ -15,6 +15,12 @@ export class DevisService {
     })
   }
 
+  public cartItemList: any = []
+  public product: any = []
+
+  public productList = new BehaviorSubject<any>([]);
+  public search = new BehaviorSubject<string>("");
+  private _items: { icon: string }[] = [];
   constructor(private http:HttpClient) { }
 
 
@@ -48,6 +54,7 @@ update(id:string, devis:devis): Observable<devis> {
  
 
 }
+
 
 
 }
