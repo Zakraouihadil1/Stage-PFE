@@ -42,7 +42,10 @@ export class EditrendezvousComponent implements OnInit {
 
       Date: new FormControl('',[Validators.required, ]),
       Lieu: new FormControl('',[Validators.required]),
-     
+      DateRDV: new FormControl('',[Validators.required, ]),
+      status: new FormControl('repondu',),
+
+
        });
   }
     

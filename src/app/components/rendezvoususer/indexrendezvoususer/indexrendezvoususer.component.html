@@ -227,7 +227,7 @@
                         <br>
                                                                                             
                         <table class="table table-hover">
-                            <thead>
+                            <!-- <thead>
                               <tr>
                                 <th>ID</th>
                                 <th>Date&Heure</th>
@@ -236,19 +236,23 @@
                                 <th>Action</th>
                     
                               </tr>
-                            </thead>
+                            </thead> -->
                             <tbody>
                              
                                  <tr *ngFor="let rendezvous of rendezvous">
                                     <ng-template  [ngIf]="rendezvous.status!='archiver' ">
 
-                                <td>{{ rendezvous.id }}</td>
-                                <td>{{ rendezvous.Date }}</td>
-                                <td>{{ rendezvous.Lieu }}</td>
-                                <td>{{ rendezvous.status}}</td>
+                                <td><b>ID</b><br>{{ rendezvous.id }}</td>
+                                <td><b>Date&Heure</b><br>{{ rendezvous.Date }}</td>
+                                <td><b>Lieu</b><br>{{ rendezvous.Lieu }}</td>
+                                <ng-template [ngIf]="rendezvous.DateRDV!='true'">
+                                    <td><b>DateRDV</b><br>{{ rendezvous.DateRDV }}</td>
+
+                                    </ng-template>
+                                <td><b>Status</b><br>{{ rendezvous.status}}</td>
 
                     
-                             <td>
+                             <td><b>Action</b>
                      
                                   <a href="#" [routerLink]="['/rendezvoususer/', rendezvous.id, 'view'] " class="btn btn-info">View</a>
                                 

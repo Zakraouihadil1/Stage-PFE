@@ -223,7 +223,7 @@
                           </div>
                                                                         
                         <table class="table table-hover">
-                            <thead>
+                            <!-- <thead>
                               <tr>
                                 <th>ID</th>
                                 <th>Date</th>
@@ -231,28 +231,31 @@
                                 <th>Produit</th>
 
                                 <th>Quantite</th>
-                                <!-- <th>Titre</th> -->
+                                <th>Titre</th>
                                 <th>Total</th>
-                                <!-- <th>QuantiteP</th> -->
+                                <th>QuantiteP</th>
                                 <th>User</th>
                                 <th>Status</th>
                                 <th >Action</th>
 
                               </tr>
-                            </thead>
+                            </thead> -->
                             <tbody>
                                 <tr *ngFor="let devis of devis | filter:term1.c">
                                     <ng-template  [ngIf]="devis.status!='archiver' ">
-                                <td>{{ devis.id }}</td>
-                                <td>{{ devis.Date }}</td>
+                                <td><b>Devis</b><br>{{ devis.id }}</td>
+                                <td><b>Date</b><br>{{ devis.Date }}</td>
 
-                                <td>{{ devis.product.name }}</td>
-                                <td>{{ devis.Quantity }}</td>
+                                <td><b>Produit</b><br>{{ devis.product.name }}</td>
+                                <td><b>Quantity</b><br>{{ devis.Quantity }}</td>
                                 <!-- <td>{{ devis.Titre }}</td> -->
-                                <td>{{ devis.Total }}</td>
+                                <ng-template [ngIf]="devis.Total!=''">
+                                    <td><b>Total</b><br>{{ devis.Total }}dt</td>
+
+                                </ng-template>
                                 <!-- <td>{{ devis.product.qte }}</td> -->
-                                <td>{{ devis.user.firstname }}</td>
-                                <td>{{ devis.status}}</td>
+                                <td><b>User</b><br>{{ devis.user.firstname }}</td>
+                                <td><b>Status</b><br>{{ devis.status}}</td>
 
 
                       

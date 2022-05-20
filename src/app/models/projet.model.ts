@@ -7,7 +7,7 @@ export class projet{
     Description?:string;
     M1?:string;
     Process?:string;
-    Machines?:CheckboxControlValueAccessor;
+    Machines?:string;
     user?:any;
     valid?:boolean;
     status?:string;

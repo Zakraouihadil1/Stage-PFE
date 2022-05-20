@@ -40,6 +40,7 @@ export class IndexrendezvoususerComponent implements OnInit {
     this.form = new FormGroup({
       Date: new FormControl('', [Validators.required]),
       Lieu: new FormControl('', Validators.required),
+      DateRDV: new FormControl('', [Validators.required]),
       user:new FormControl(this.data.id, Validators.required),
 
     });

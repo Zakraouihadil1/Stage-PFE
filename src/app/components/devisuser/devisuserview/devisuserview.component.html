@@ -225,29 +225,34 @@
                         <strong>Date:</strong>
                         <p>{{ devis.Date }}</p>
                     </div>
-                   
                     <div>
+                        <strong>Produit:</strong>
+                        <p>{{ devis.product.name }}</p>
+                    </div>
+                   
+                    <!-- <div>
                         <strong>Titre</strong>
                         <p>{{ devis.Titre }}</p>
                     </div>
-                
+                 -->
                     <div>
                         <strong>Quantite:</strong>
                         <p>{{ devis.Quantity }}</p>
                     </div>
                     <div>
-                        <strong>Total:</strong>
+                        <ng-template [ngIf]="devis.Total!=''">
+                            <strong >Total:</strong>
                         <p>{{ devis.Total }}</p>
+                        </ng-template>
+                        
                     </div>
-                    <div>
-                        <strong>Produit:</strong>
-                        <p>{{ devis.product.name }}</p>
-                    </div>
-                    <div>
+                   
+                    <!-- <div>
                         <strong>Quantite du Produit:</strong>
                         <p>{{ devis.product.qte}}</p>
-                    </div>
+                    </div> -->
                     <div>
+                        
                         <strong>Status:</strong>
                         <p>{{devis.status}}</p>
                     </div>

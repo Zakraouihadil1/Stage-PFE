@@ -222,12 +222,14 @@
                                                <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
     Créer Etude Projet </button>
+    <br>
+    <br>
                     <!-- <a href="#" routerLink="/projetuser/create" class="btn btn-primary">Create Etude Projet</a>
                     <br>
                     <br> -->
 
                     <table class="table table-hover">
-                        <thead>
+                        <!-- <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>Titre</th>
@@ -241,19 +243,30 @@
 
 
                             </tr>
-                        </thead>
+                        </thead> -->
                         <tbody>
 
                             <tr *ngFor="let projet of projet">
                                 <ng-template [ngIf]="projet.status!='archiver' ">
 
-                                    <td>{{ projet.id }}</td>
-                                    <td>{{ projet.Titre }}</td>
-                                    <td>{{ projet.Description }}</td>
-                                    <td > {{ projet.M1 }}</td>
-                                    <td >{{ projet.Process }}</td>
-                                    <td >{{ projet.Machines }}</td>
-                                    <td >{{ projet.status }}</td>
+                                    <td><b>ID</b>  <br>{{ projet.id }}</td>
+                              <td> <b>Titre</b> <br>{{ projet.Titre }}</td>
+                              <td> <b>Description</b> <br>{{ projet.Description }}</td>
+                              
+                                <ng-template [ngIf]="projet.M1!=''">
+                                    <td> <b>M1</b>  <br>{{ projet.M1 }}</td>
+
+                                </ng-template>
+                                
+                                <ng-template [ngIf]="projet.Process!=''">
+                                    <td > <b>Process</b> <br>{{ projet.Process }}</td>
+
+                                </ng-template>
+                                <ng-template [ngIf]="projet.Machines!=''">
+                                    <td ><b>Machines</b> <br>{{ projet.Machines }}</td>
+
+                                </ng-template>
+                              <td><b>Status</b><br>{{ projet.status}}</td>
 
                                     <td>
 
@@ -290,7 +303,7 @@
       <div class="modal-content">
         <div class="modal-header bg-secondry">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title text-white">Créer Rendez-vous</h4>
+            <h4 class="modal-title text-white">Demande Etude de projet</h4>
           </div>
         <div class="modal-body">
          

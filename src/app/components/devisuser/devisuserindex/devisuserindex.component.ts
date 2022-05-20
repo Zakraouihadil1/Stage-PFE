@@ -39,6 +39,15 @@ export class DevisuserindexComponent implements OnInit {
   }
   constructor(private devisService:DevisService,private userService:UserService,  private route: ActivatedRoute,private jwtService:JwtService,private produitService:ProduitService,private router: Router) { }
 
+  Date=new Date();
+  currentYear = this.Date.getUTCFullYear();
+  currentMonth = this.Date.getUTCMonth()+1;
+  currentDay = this.Date.getUTCDate();
+
+
+  TodayDate="2022-05-15"
+FinalMonth:any;
+FinalDay:any;
   ngOnInit(): void {
 
 
@@ -71,8 +80,23 @@ export class DevisuserindexComponent implements OnInit {
 
 
     });
+
+
+if (this.currentMonth<10) {
+  this.FinalMonth="0"+this.currentMonth
+  
+} else {
+  this.FinalMonth=this.currentMonth;  
+}
+
+if (this.currentDay<10) {
+  this.FinalDay="0"+this.currentDay
+  
+} else {
+  this.FinalDay=this.currentDay;  
+}
     
-    
+   this.TodayDate=this.currentYear + "-" +this.FinalMonth + "-"+this.FinalDay ; 
   }
 
   
@@ -87,16 +111,17 @@ export class DevisuserindexComponent implements OnInit {
   get f(){
     return this.form.controls;
   }
+
   submit(){
 
     const formData = new FormData();
     formData.append('Date', this.form.value.Date)
-    formData.append('Titre', this.form.value.Titre)
+    // formData.append('Titre', this.form.value.Titre)
     // formData.append('Total', this.form.value.Total)
     formData.append('Quantity', this.form.value.Quantity)
     formData.append('product', this.form.value.product)
  
-
+    
 
     this.submitted = true;
   

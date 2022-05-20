@@ -258,34 +258,46 @@
                           </div>
                                                                                           
                       <table class="table table-hover">
-                          <thead>
-                            <tr>
-                              <th>ID</th>
-                              <th>Titre</th>
-                              <th>Description</th>
-                              <th>M1</th>
-                              <th>Process</th>
-                              <th>Machines</th>
-                              <th>User</th>
-                              <th>Action</th>
-                              <th>Status</th>
+                          <!-- <thead>
+                            <tr >
+                              <td>ID</td>
+                              <td>Titre</td>
+                              <td>Description</td>
+                              <td>M1</td>
+                              <td>Process</td>
+                              <td>Machines</td>
+                              <td>User</td>
+                              <td>Action</td>
+                              <td>Status</td>
 
                   
                   
                             </tr>
-                          </thead>
+                          </thead> -->
                           <tbody>
                            
                                <tr *ngFor="let projet of projet| filter:term1.c">
                                 <ng-template  [ngIf]="projet.status!='archiver' ">
-                              <td>{{ projet.id }}</td>
-                              <td>{{ projet.Titre }}</td>
-                              <td>{{ projet.Description }}</td>
-                              <td>{{ projet.M1 }}</td>
-                              <td>{{ projet.Process }}</td>
-                              <td>{{ projet.Machines }}</td>
-                              <td>{{ projet.user.firstname }}</td>
-                              <td>{{ projet.status}}</td>
+                                    
+                              <td><b>ID</b>  <br>{{ projet.id }}</td>
+                              <td> <b>Titre</b> <br>{{ projet.Titre }}</td>
+                              <td> <b>Description</b> <br>{{ projet.Description }}</td>
+                              
+                                <ng-template [ngIf]="projet.M1!=''">
+                                    <td> <b>M1</b>  <br>{{ projet.M1 }}</td>
+
+                                </ng-template>
+                                
+                                <ng-template [ngIf]="projet.Process!=''">
+                                    <td > <b>Process</b> <br>{{ projet.Process }}</td>
+
+                                </ng-template>
+                                <ng-template [ngIf]="projet.Machines!=''">
+                                    <td ><b>Machines</b> <br>{{ projet.Machines }}</td>
+
+                                </ng-template>
+                              <td><b>User</b><br>{{ projet.user.firstname }}</td>
+                              <td><b>Status</b><br>{{ projet.status}}</td>
 
 
                            <td>

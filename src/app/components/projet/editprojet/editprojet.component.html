@@ -332,13 +332,15 @@
                                         <div *ngIf="f['Description'].errors['Description']"class="alert alert-danger">Description is invalid</div>
                                       </div>                
                             </div>
-                            <div class="form-group">
+                            <div class="form-group"   *ngIf="projet.M1 == '1' "
+                            >
                                 <label for="body">M1:</label>
                                 <input 
+                                *ngIf="projet.M1 == '1' "
+
                                     formControlName="M1"
                                     id="M1"
                                     type="text" 
-                                    [(ngModel)]="projet.M1"
                                     name="M1"
                                     class="form-control" 
                                    >    
@@ -346,25 +348,27 @@
                                      
                             </div>
                     
-                            <div class="form-group">
+                            <div class="form-group" *ngIf="projet.Process == '1' "
+                            >
                                 <label for="body">Process:</label>
                                 <input 
+
                                     formControlName="Process"
                                     id="Process"
                                     type="text" 
-                                    [(ngModel)]="projet.Process"
                                     name="Process"
                                     class="form-control" > 
                                                     
                                     
                             </div>
-                            <div class="form-group">
+                            <div class="form-group"  *ngIf="projet.Machines == '1' ">
                                 <label for="body">Machines:</label>
                                 <input 
+                               
+
                                     formControlName="Machines"
                                     id="Machines"
                                     type="text" 
-                                    [(ngModel)]="projet.Machines"
                                     name="Machines"
                                     class="form-control" >  
                                           

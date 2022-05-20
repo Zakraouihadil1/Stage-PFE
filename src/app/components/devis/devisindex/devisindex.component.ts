@@ -28,7 +28,15 @@ export class DevisindexComponent implements OnInit {
   }
 
   constructor(private devisService:DevisService,private produitService:ProduitService,private userService:UserService) { }
+  Date=new Date();
+  currentYear = this.Date.getUTCFullYear();
+  currentMonth = this.Date.getUTCMonth()+1;
+  currentDay = this.Date.getUTCDate();
 
+
+  TodayDate="2022-05-15"
+FinalMonth:any;
+FinalDay:any;
   ngOnInit(): void {
     this.devisService.getAllData().subscribe((data: devis[])=>{
       this.devis = data;
@@ -42,6 +50,24 @@ export class DevisindexComponent implements OnInit {
       this.users = data;
       console.log(this.users);
     })  
+
+
+
+    if (this.currentMonth<10) {
+      this.FinalMonth="0"+this.currentMonth
+      
+    } else {
+      this.FinalMonth=this.currentMonth;  
+    }
+    
+    if (this.currentDay<10) {
+      this.FinalDay="0"+this.currentDay
+      
+    } else {
+      this.FinalDay=this.currentDay;  
+    }
+        
+       this.TodayDate=this.currentYear + "-" +this.FinalMonth + "-"+this.FinalDay ; 
   }
 
   devis1:any ={

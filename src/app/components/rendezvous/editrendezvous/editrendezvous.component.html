@@ -340,6 +340,23 @@
                             </div>
                     
                             
+                            <div class="form-group">
+                                <label for="title">Date&Heure RDV:</label>
+                                <input 
+                                    formControlName="DateRDV"
+                    
+                                    id="DateRDV" 
+                                    type="datetime-local" 
+                                    [(ngModel)]="rendezvous.DateRDV"
+                                    name="DateRDV"
+                                    class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f['DateRDV'].errors }">
+                                    <div *ngIf="submitted && f['DateRDV'].errors" class="invalid-feedback">
+                                        <div *ngIf="f['DateRDV'].errors['required']" class="alert alert-danger">Date is required</div>
+                                        <div *ngIf="f['DateRDV'].errors['DateRDV']"class="alert alert-danger">Date is invalid</div>
+                                      </div>
+                                              
+                            </div>
                        
                             <button class="btn btn-success" type="submit"   >Update</button>
                         </form>

@@ -48,11 +48,17 @@ export class IndexrendezvousComponent implements OnInit {
     status:"archiver"
 
   }
+  rendezvous4:any ={
+    valid :true,
+    status:"repondu"
+
+  }
   validate(id: any) {
     this.rendezvousService.update(id, this.rendezvous2).subscribe((res:any) => {
       this.ngOnInit()
  })
  
+
 
   }
   review(id: any){
@@ -66,6 +72,12 @@ export class IndexrendezvousComponent implements OnInit {
     this.rendezvousService.update(id, this.rendezvous3).subscribe((res:any) => {
       this.ngOnInit()
  })
+  }
+
+  repondre(id: any) {
+    this.rendezvousService.update(id, this.rendezvous4).subscribe((res:any) => {
+      this.ngOnInit()
+  })
   }
 
   term: any;
