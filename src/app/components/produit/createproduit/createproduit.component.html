@@ -378,7 +378,7 @@
           formControlName="prixuht"
           class="form-control"
           [ngClass]="{ 'is-invalid': submitted && f['prixuht'].errors }"
-          > 
+          > dt
           <div *ngIf="submitted && f['prixuht'].errors" class="invalid-feedback">
               <div *ngIf="f['prixuht'].errors['required']" class="alert alert-danger">PrixUht is required</div>
             </div>   

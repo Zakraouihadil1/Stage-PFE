@@ -20,6 +20,10 @@ export class CommandeService {
     return this.http.get<commande>(AUTH_API + 'commande/' + id)
    
   }
+  findbyuserid(user:string):Observable<any>{
+    return this.http.get<commande[]>(AUTH_API+'commande/user/'+user)
+  
+   }
 
   create(data: any): Observable<commande> {
     return this.http.post<commande>(AUTH_API + 'commande/', data)

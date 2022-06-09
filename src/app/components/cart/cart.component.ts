@@ -14,6 +14,9 @@ import { Router } from '@angular/router';
 })
 export class CartComponent implements OnInit {
   public products: any = [];
+  public products1 = [];
+  j=0;
+
   // public grandTotal !: number;
   public TotalQte !: string;
   public Total !: number;
@@ -31,13 +34,22 @@ export class CartComponent implements OnInit {
     this.cartService.getProducts()
       .subscribe(res => {
         this.products = res;
+
         // this.grandTotal = this.cartService.getTotalPrice();
         this.TotalQte = this.cartService.getTotalQte();
         this.Total = this.cartService.getTotal();
         this.totalItem = res.length;
 
 
+
       })
+
+      for (let i=0 ; i<this.products.length; i++){
+        this.products1[this.j]=this.products[i].qte
+        this.j++;
+        }
+        console.log(this.products1)
+        
   }
   removeItem(item: any) {
     this.cartService.removeCartItem(item);

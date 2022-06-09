@@ -41,6 +41,7 @@ firstname:'',
 lastname:'',
 email:'',
 roles:'',
+password:'',
 id:''
 
 }
@@ -68,6 +69,8 @@ id:''
       firstname: new FormControl('',[Validators.required]),
       lastname: new FormControl('',[Validators.required]),
       email: new FormControl('',[Validators.required ,  Validators.email]),
+      password: new FormControl('',[Validators.required ,]),
+
            user:new FormControl(this.user.id, Validators.required),
 
     //  id: new FormControl('',[Validators.required ,  ]),

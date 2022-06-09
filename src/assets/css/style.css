@@ -14155,9 +14155,10 @@ background: #000;
 	Slide bottom section
 --------------------------*/
 .image-effect-one {
-  position: relative;
+  position:relative;
   overflow: hidden;
-  background-color: #000;
+  background-color: 0000;
+  height: 220px;
 }
 
 .image-effect-one *,

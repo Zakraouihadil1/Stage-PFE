@@ -164,12 +164,11 @@ export class CheckoutComponent implements OnInit {
     this.commandeService.create(this.dat).subscribe((res: any) => {
       alert('Commande created successfully!');
       console.log(this.dat);
-      // this.router.navigateByUrl('products');
+      this.router.navigateByUrl('commandeuser');
       // this.cart = localStorage.getItem('items');
       // console.log(this.cart);
 
     })
   }
-
 
 }

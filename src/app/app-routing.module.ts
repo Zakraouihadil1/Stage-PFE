@@ -82,6 +82,15 @@ import { DeviseditComponent } from './components/devis/devisedit/devisedit.compo
 
 import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { CommandeComponent } from './components/commande/commande.component';
+import { ViewcommandeComponent } from './components/commande/viewcommande/viewcommande.component';
+import { CommandeuserindexComponent } from './components/commandeuser/commandeuserindex/commandeuserindex.component';
+import { ViewcommandeuserComponent } from './components/commandeuser/viewcommandeuser/viewcommandeuser.component';
+import { ProfileadminComponent } from './components/profileadmin/profileadmin.component';
+import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
+import { UpdatePasswordComponent } from './components/update-password/update-password.component';
+
+
 
 
 const routes: Routes = [
@@ -150,6 +159,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent, } ,
   { path: 'register', component: RegisterComponent } ,
   { path: 'profile', component: ProfileComponent } ,
+  { path: 'profileadmin', component: ProfileadminComponent } ,
+
   { path: 'admin', component: BoardAdminComponent },
   { path: 'user', component: BoardUserComponent },
 
@@ -181,6 +192,15 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent } ,
   
   { path: 'checkout', component:CheckoutComponent } ,
+
+  { path: 'commande', component:CommandeComponent } ,
+  { path: 'commande/:commandeId/view', component: ViewcommandeComponent },
+  { path: 'commandeuser', component:CommandeuserindexComponent } ,
+  { path: 'commandeuser/:commandeId/view', component:ViewcommandeuserComponent } ,
+  { path: 'forgetpassword', component:ForgetPasswordComponent } ,
+  { path: 'updatepassword/:id', component:UpdatePasswordComponent } ,
+
+
 
 
 ];

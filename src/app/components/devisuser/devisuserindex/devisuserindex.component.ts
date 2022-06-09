@@ -10,6 +10,7 @@ import { UserService } from 'src/app/services/user.service';
 import { JwtService } from 'src/app/jwt.service';
 import { ProduitService } from 'src/app/services/produit.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-devisuserindex',
   templateUrl: './devisuserindex.component.html',
@@ -37,7 +38,10 @@ export class DevisuserindexComponent implements OnInit {
     name:'',
     qte: '',
   }
-  constructor(private devisService:DevisService,private userService:UserService,  private route: ActivatedRoute,private jwtService:JwtService,private produitService:ProduitService,private router: Router) { }
+  datesys: any;
+  dateDeb: number;
+  dateDebe: string;
+  constructor(private devisService:DevisService,private userService:UserService,  private route: ActivatedRoute,private jwtService:JwtService,private produitService:ProduitService,private router: Router,private datePipe: DatePipe) { }
 
   Date=new Date();
   currentYear = this.Date.getUTCFullYear();
@@ -51,6 +55,8 @@ FinalDay:any;
   ngOnInit(): void {
 
 
+    // this.datesys=new Date().toLocaleDateString() ;
+    // console.log(this.datesys)
 
     this.token = localStorage.getItem('access_token');
     this.data = jwtDecode(this.token);
@@ -71,7 +77,8 @@ FinalDay:any;
 
     
     this.form = new FormGroup({
-      Date: new FormControl('', [Validators.required]),
+      Date: new FormControl('', Validators.required),
+
       // Titre: new FormControl('', Validators.required),
       // Total: new FormControl('', Validators.required),
       Quantity: new FormControl('', Validators.required),
@@ -80,6 +87,8 @@ FinalDay:any;
 
 
     });
+    // this.form.value.Date=this.datesys;
+    // console.log(this.form.value.Date)
 
 
 if (this.currentMonth<10) {
@@ -114,6 +123,9 @@ if (this.currentDay<10) {
 
   submit(){
 
+    
+    //  this.form.value.Date=this.datesys
+
     const formData = new FormData();
     formData.append('Date', this.form.value.Date)
     // formData.append('Titre', this.form.value.Titre)
@@ -121,15 +133,25 @@ if (this.currentDay<10) {
     formData.append('Quantity', this.form.value.Quantity)
     formData.append('product', this.form.value.product)
  
-    
 
     this.submitted = true;
+    this.dateDeb = new Date(this.form.value.Date).getTime()
+    this.datesys=new Date().toLocaleDateString() ;
+    console.log(this.datesys);
+    this.dateDebe=this.datePipe.transform(this.form.value.Date, 'dd/MM/yyyy')
+    console.log(this.dateDebe);
   
+    if (this.dateDebe == this.datesys){
+
       this.devisService.create(this.form.value).subscribe((res:any) => {
      alert('Devis created successfully!');
         console.log(this.form.value);
    })
     }
+    else{
+      alert('date non valide')
+    }
+  }
     
 
     loggedIn(){
@@ -148,5 +170,9 @@ if (this.currentDay<10) {
       });
     }
 
+    click(){
+      this.form.value.Date=this.datesys
+
+    }
 
 }

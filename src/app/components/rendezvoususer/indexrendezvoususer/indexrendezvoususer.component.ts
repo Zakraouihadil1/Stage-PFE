@@ -7,6 +7,7 @@ import { user } from 'src/app/models/user.model';
 import jwtDecode from 'jwt-decode';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-indexrendezvoususer',
   templateUrl: './indexrendezvoususer.component.html',
@@ -30,7 +31,11 @@ export class IndexrendezvoususerComponent implements OnInit {
     password:'',
     roles:''
   }
-  constructor(private rendezvousService:RendezvousService,private userService:UserService, private router: Router) { }
+  datesys:any;
+  dateDeb: number;
+  dateDebe: string;
+  
+  constructor(private rendezvousService:RendezvousService,private userService:UserService, private router: Router,private datePipe: DatePipe) { }
 
   ngOnInit(): void {
     this.token = localStorage.getItem('access_token');
@@ -40,7 +45,7 @@ export class IndexrendezvoususerComponent implements OnInit {
     this.form = new FormGroup({
       Date: new FormControl('', [Validators.required]),
       Lieu: new FormControl('', Validators.required),
-      DateRDV: new FormControl('', [Validators.required]),
+      // DateRDV: new FormControl('', [Validators.required]),
       user:new FormControl(this.data.id, Validators.required),
 
     });
@@ -73,13 +78,22 @@ export class IndexrendezvoususerComponent implements OnInit {
   submit(){
 
     this.submitted = true;
+    this.dateDeb = new Date(this.form.value.Date).getTime()
+    this.datesys=new Date().toLocaleDateString() ;
+    console.log(this.datesys);
+    this.dateDebe=this.datePipe.transform(this.form.value.Date, 'dd/MM/yyyy')
+    console.log(this.dateDebe);
+    if (this.dateDebe >= this.datesys){
    
       this.rendezvousService.create(this.form.value).subscribe((res:any) => {
         alert('RendezVous created successfully!');
         console.log(this.form.value);
         // this.router.navigateByUrl('rendezvoususer/index');
    })
-    
+  }
+  else {
+    alert ('date non valide')
+  }
     
   }
 

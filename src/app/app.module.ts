@@ -86,6 +86,14 @@ import { CartComponent } from './components/cart/cart.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FilterPipe } from './shared/filter.pipe';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { DatePipe } from '@angular/common';
+import { CommandeComponent } from './components/commande/commande.component';
+import { ViewcommandeComponent } from './components/commande/viewcommande/viewcommande.component';
+import { CommandeuserindexComponent } from './components/commandeuser/commandeuserindex/commandeuserindex.component';
+import { ViewcommandeuserComponent } from './components/commandeuser/viewcommandeuser/viewcommandeuser.component';
+import { ProfileadminComponent } from './components/profileadmin/profileadmin.component';
+import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
+import { UpdatePasswordComponent } from './components/update-password/update-password.component';
 
 
 
@@ -162,6 +170,13 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     CartComponent,
     HeaderComponent,
     CheckoutComponent,
+    CommandeComponent,
+    ViewcommandeComponent,
+    CommandeuserindexComponent,
+    ViewcommandeuserComponent,
+    ProfileadminComponent,
+    ForgetPasswordComponent,
+    UpdatePasswordComponent,
   //  FilterPipe,
   ],
   imports: [
@@ -183,7 +198,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
       }
     })
   ],
-  providers: [ ],
+  providers: [ DatePipe],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

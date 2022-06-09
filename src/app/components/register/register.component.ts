@@ -15,6 +15,14 @@ import { CategorieService } from '../../services/categorie.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  email = new FormControl('', [Validators.required, Validators.email]);
+  password = new FormControl('', [Validators.required]);
+  firstname= new FormControl('',[Validators.required]);
+  lastname= new FormControl('',[Validators.required]);
+  confirmPassword= new FormControl('',[Validators.required]);
+  roles=new FormControl('',[Validators.required]);
+
+  hide = true;
 
   Roles: any = ['user'];
   categories: categorie[] = [];
@@ -108,7 +116,7 @@ id:'',
       else {
         this.jwtService.register(this.form.value).subscribe(
           (response:any)  => {
-            alert('REGISTRAITED SUCCESSFULLY Votre demande ça sera accepter dans 24 heures');
+            alert(' vous inscrit avec succées ... Votre demande ça sera accepter ultérieurement');
             this.router.navigate(['/login']);
          
        },(error:any)  => {
@@ -132,5 +140,54 @@ id:'',
   onReset(): void {
     this.submitted = false;
     this.form.reset();
+  }
+  getErrorMessage() {
+    
+    if (this.email.hasError('required')) {
+      return 'vous devez entrer votre email';
+    }
+
+    return this.email.hasError('email') ?  'email invalide' : '';
+  }
+
+  getErrorMessage1() {
+    
+    if (this.password.hasError('required')) {
+      return 'vous devez entrer votre mot de passe';
+    }
+
+    return this.password.hasError('password') ? 'mot de passe invalide' : '';
+  }
+  getErrorMessage2() {
+    
+    if (this.firstname.hasError('required')) {
+      return 'vous devez entrer votre nom';
+    }
+
+    return this.firstname.hasError('firstname') ? 'nom invalide' : '';
+  }
+  getErrorMessage3() {
+    
+    if (this.lastname.hasError('required')) {
+      return 'vous devez entrer votre prenom';
+    }
+
+    return this.lastname.hasError('lastname') ? 'prenom invalide' : '';
+  }
+  getErrorMessage4() {
+    
+    if (this.confirmPassword.hasError('required')) {
+      return 'confirmez votre mot de passe';
+    }
+
+    return this.confirmPassword.hasError('confirmPassword') ? 'confirmPassword invalide' : '';
+  }
+  getErrorMessage5() {
+    
+    if (this.roles.hasError('required')) {
+      return 'entrez votre role';
+    }
+
+    return this.roles.hasError('roles') ? 'roles invalide' : '';
   }
 }

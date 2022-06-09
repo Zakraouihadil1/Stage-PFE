@@ -16,6 +16,7 @@ export class ViewrendezvoususerComponent implements OnInit {
   form: FormGroup = new FormGroup({
     Date: new FormControl('',[Validators.required]),
     Lieu: new FormControl('',[Validators.required]),
+    DateRDV: new FormControl('',[Validators.required]),
     
 
   });

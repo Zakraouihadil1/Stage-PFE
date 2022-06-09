@@ -49,6 +49,7 @@ export class EditComponent implements OnInit {
       lastname: new FormControl('',[Validators.required]),
       email: new FormControl('',[Validators.required ,  Validators.email]),
       roles: new FormControl('',[Validators.required])  ,
+      password:new FormControl('',),
       id: new FormControl('',[Validators.required])   });
 
   }
@@ -76,6 +77,7 @@ export class EditComponent implements OnInit {
     else {
       this.userService.update(this.id, this.form.value).subscribe((res:any) => {
         alert('User updated successfully!');
+
         this.router.navigateByUrl('profile');
    })
 
@@ -99,6 +101,14 @@ export class EditComponent implements OnInit {
 
    
   }
+  logout() {
+  localStorage.removeItem('access_token');
+  this.router.navigate(['/login']);
+}
+
+ loggedIn(){
+  return localStorage.getItem('access_token') ;
+}
    
 }
 

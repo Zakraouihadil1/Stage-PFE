@@ -288,15 +288,16 @@
                     <div class="  cat-2 col-md-9 col-sm-6 m-b30">
                         <!-- TITLE END --> 
   
-                        <a href="#" routerLink="/rendezvous/index" class="btn btn-warning">Back</a>
+                        <!-- <a href="#" routerLink="/rendezvous/index" class="btn btn-warning">Back</a> -->
+                        <button mat-raised-button style="width:10%;  background-color: black; color: white;" routerLink="/rendezvous/index" type="button" >Back</button>
+
                         <br>
                         <br>
                               
                         <form [formGroup]="form" (ngSubmit)="submit()" >
-                            <div class="form-group">
+                            <div class="form-group" hidden>
                                 <label for="body">ID:</label>
                                 <input 
-                                disabled
                                 name="id"
                                 id="id" 
                                 type="text" 
@@ -310,11 +311,11 @@
                                     formControlName="Date"
                     
                                     id="Date" 
-                                    type="datetime-local" 
+                                    type="datetime" 
                                     [(ngModel)]="rendezvous.Date"
                                     name="Date"
                                     class="form-control"
-                                    [ngClass]="{ 'is-invalid': submitted && f['Date'].errors }">
+                                    [ngClass]="{ 'is-invalid': submitted && f['Date'].errors }" readonly>
                                     <div *ngIf="submitted && f['Date'].errors" class="invalid-feedback">
                                         <div *ngIf="f['Date'].errors['required']" class="alert alert-danger">Date is required</div>
                                         <div *ngIf="f['Date'].errors['Date']"class="alert alert-danger">Date is invalid</div>
@@ -331,7 +332,7 @@
                                     [(ngModel)]="rendezvous.Lieu"
                                     name="Lieu"
                                     class="form-control" 
-                                    [ngClass]="{ 'is-invalid': submitted && f['Date'].errors }">    
+                                    [ngClass]="{ 'is-invalid': submitted && f['Date'].errors }" readonly>    
                                     
                                     <div *ngIf="submitted && f['Lieu'].errors" class="invalid-feedback">
                                         <div *ngIf="f['Lieu'].errors['required']" class="alert alert-danger">Lieu is required</div>
@@ -350,7 +351,7 @@
                                     [(ngModel)]="rendezvous.DateRDV"
                                     name="DateRDV"
                                     class="form-control"
-                                    [ngClass]="{ 'is-invalid': submitted && f['DateRDV'].errors }">
+                                    [ngClass]="{ 'is-invalid': submitted && f['DateRDV'].errors }" >
                                     <div *ngIf="submitted && f['DateRDV'].errors" class="invalid-feedback">
                                         <div *ngIf="f['DateRDV'].errors['required']" class="alert alert-danger">Date is required</div>
                                         <div *ngIf="f['DateRDV'].errors['DateRDV']"class="alert alert-danger">Date is invalid</div>
@@ -358,7 +359,10 @@
                                               
                             </div>
                        
-                            <button class="btn btn-success" type="submit"   >Update</button>
+
+                            <button mat-raised-button style="width:10%;  background-color: #F5BF23;" type="submit" >Update</button>
+
+                            <!-- <button class="btn btn-success" type="submit"   >Update</button> -->
                         </form>
 
 

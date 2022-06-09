@@ -7,6 +7,7 @@ import { JwtService } from 'src/app/jwt.service';
 import jwtDecode from 'jwt-decode';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-indexconsultationuser',
@@ -32,15 +33,16 @@ export class IndexconsultationuserComponent implements OnInit {
   }
   form!: FormGroup;
   submitted = false;
- 
-
+ datesys:any;
+  dateDeb: number;
+  dateDebe: string;
   
-  constructor(private consultationService:ConsultationService,private userService:UserService, private jwtService:JwtService,public router: Router,private route: ActivatedRoute,) { }
+  constructor(private consultationService:ConsultationService,private userService:UserService, private jwtService:JwtService,public router: Router,private route: ActivatedRoute, private datePipe: DatePipe
+    ) { }
 
   ngOnInit(): void {
 
     this.token = localStorage.getItem('access_token');
-
     this.data = jwtDecode(this.token);
  
    
@@ -69,6 +71,8 @@ export class IndexconsultationuserComponent implements OnInit {
       this.consultations = data;
       console.log(this.consultations);
     }) */ 
+
+
   }
 
   
@@ -84,15 +88,26 @@ export class IndexconsultationuserComponent implements OnInit {
   submit(){
 
     this.submitted = true;
-   
+    this.dateDeb = new Date(this.form.value.Date).getTime()
+    this.datesys=new Date().toLocaleDateString() ;
+    console.log(this.datesys);
+    this.dateDebe=this.datePipe.transform(this.form.value.Date, 'dd/MM/yyyy')
+    console.log(this.dateDebe);
+
+     if (this.dateDebe >= this.datesys){
       this.consultationService.create(this.form.value).subscribe((res:any) => {
-  alert('Consultation created successfully!');
-    // this.router.navigateByUrl('consultationuser/index');
-   })
-    
+        alert('Consultation created successfully!');
+          // this.router.navigateByUrl('consultationuser/index');
+         })
+    }
+    else {
+           alert ('date non valide')
+         }
+
     
   }
 
+  
      loggedIn(){
       return localStorage.getItem('access_token') ;
     }

@@ -19,7 +19,6 @@ body {
 }
 .login-wrapper {
   height: 500%;
-  width: 100%;
 }
 .positronx {
   text-decoration: none;
@@ -38,7 +37,7 @@ body {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   z-index: 5;
-  max-width: 330px;
+  max-width: 600px;
 }
 .box.back {
   transform: scale(.95);
@@ -67,9 +66,10 @@ body {
   max-width: 300px;
   width: 100%;
 }
-.login-wrapper .example-full-width,
-.login-wrapper .btn-block {
-  width: 100%;
+.login-wrapper .example-full-width
+{
+  padding-left:10% ;
+  width: 90%;
 }
 .login-wrapper mat-card-header {
   text-align: center;

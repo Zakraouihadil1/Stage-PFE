@@ -15,6 +15,10 @@ export class DeviseditComponent implements OnInit {
   devis!: devis;
   form!: FormGroup;
   submitted = false;
+  devis1=0;
+  Taux:number;
+ public Result:number;
+
 
   /*------------------------------------------
   --------------------------------------------
@@ -36,14 +40,20 @@ export class DeviseditComponent implements OnInit {
     this.id = this.route.snapshot.params['devisId'];
     this.devisService.find(this.id).subscribe((data: devis)=>{
       this.devis = data;
+      this.devis.Result=this.Result;
+      this.devis.Total=this.devis.product.prixuht*this.devis.Quantity;
     }); 
+
+  
       
     this.form = new FormGroup({
 
       Date: new FormControl('', [Validators.required]),
       // Titre: new FormControl('', Validators.required),
       Total: new FormControl('', Validators.required),
+      Result: new FormControl('', Validators.required),
       Quantity: new FormControl('', Validators.required),
+
        });
   }
     
@@ -63,17 +73,19 @@ export class DeviseditComponent implements OnInit {
    */
   submit(){
     this.submitted = true;
-    if (this.form.invalid) {
-      alert("PLEASE VERIFY YOUR INFORMATIONS!!" );
-
-    }
-    else {
-      this.devisService.update(this.id, this.form.value).subscribe((res:any) => {
+      this.devisService.update(this.id, this.devis).subscribe((res:any) => {
         alert('Devis updated successfully!');
-        this.router.navigateByUrl('devis/index');
+         this.router.navigateByUrl('devis/index');
    })
+   console.log(this.devis)
 
    
+    }
+
+    
+    mutiplication(){
+      this.Result= this.devis.Total*this.Taux
+      this.devis.Result=this.Result;
     }
 
 
@@ -85,4 +97,4 @@ export class DeviseditComponent implements OnInit {
 
    
   }
-}
+

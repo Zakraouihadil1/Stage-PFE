@@ -58,5 +58,16 @@ update(id:string, user:user): Observable<user> {
 
 }
 
+// getbyid(id:string):Observable<user>{
+//   return this.http.get<user>( AUTH_API+'users/'+id )
+
+// }
+
+sendEmail(user:user){
+  return this.http.post(AUTH_API + 'email/emailTemplate', user)
+  
+  
+}
+
 
 }

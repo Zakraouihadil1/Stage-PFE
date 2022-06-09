@@ -46,6 +46,7 @@ export class CreateconsultationuserComponent implements OnInit {
       sujet: new FormControl('', Validators.required),
       user:new FormControl(this.data.id, Validators.required),
     });
+    
   }
 
   get f(){
@@ -53,6 +54,7 @@ export class CreateconsultationuserComponent implements OnInit {
   }
 
   submit(){
+
 
     this.submitted = true;
     if (this.form.invalid) {

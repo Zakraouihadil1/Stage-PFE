@@ -5,13 +5,12 @@
                 <div class="row">
                     <div class="mt-topbar-left clearfix">
                         <ul class="list-unstyled e-p-bx pull-right">
-                            <li><i class="fa fa-envelope"></i> 7xthemehelp@gmail.com</li>
-                            <li><i class="fa fa-phone"></i>(075) 123-7654</li>
-                            <li><i class="fa fa-clock-o"></i>Sun-Sat 9.45 am</li>
+                            <li><i class="fa fa-envelope"></i> contact.webmafi@gmail.com</li>
+                            <li><i class="fa fa-phone"></i>(216) 55-489-698</li>
                         </ul>
                     </div>
                     <div class="mt-topbar-right clearfix">
-                        <div class="appint-btn"><a href="#" class="site-button">Make an Appointment</a></div>                            
+                        <div class="appint-btn"><a href="#" class="site-button">Bienvenue chez nous</a></div>                            
                     </div>
                 </div>
             </div>
@@ -37,7 +36,7 @@
                         <div class="extra-nav">
                             
                             <div class="extra-cell">
-                                <a href="#" class="contact-slide-show"><i class="fa fa-angle-left arrow-animation"></i></a>
+                                <a  class="contact-slide-show"><i class="fa fa-angle-left arrow-animation"></i></a>
                             </div>                                
                         </div>
                         <!-- ETRA Nav -->
@@ -53,7 +52,7 @@
                                             <div class="icon-xs m-b20 scale-in-center"><i class="fa fa-phone"></i></div>
                                             <div class="icon-content">
                                                 <h5 class="m-t0 font-weight-500">Phone number</h5>
-                                                <p>(075) 123-7654</p>
+                                                <p>(216) 55-489-698</p>
                                             </div>
                                         </div>
                                         
@@ -103,16 +102,11 @@
                          <div class="header-nav navbar-collapse collapse">
                             <ul class=" nav navbar-nav">
                                 <li class="active">
-                                    <a href="/home">Home</a>
+                                    <a href="/home">Accueil</a>
                                                                                    
                                 </li>
     
-                                <li>
-                                    <a href="/about">About us</a>
-                                </li> 
-                                <li>
-                                    <a href="/services">Services</a>
-                                </li> 
+    
                                 <li>
                                     <a href="/projectM"> Produits</a>
                                     
@@ -125,7 +119,7 @@
                                 </li>                                   
     
                                 <li>
-                                    <a href="/contact">Contact us</a>
+                                    <a href="/contact">Contactez-nous</a>
                                 </li>                         
                             </ul>
                         </div>
@@ -145,8 +139,8 @@
         <div class="section-head">
             <div class="mt-separator-outer separator-left">
                 <div class="mt-separator">
-                    <h2 class="text-uppercase sep-line-one "><span class="font-weight-300 text-primary">Our</span>
-                        Consultation List</h2>
+                    <h2 class="text-uppercase sep-line-one "><span class="font-weight-300 text-primary">Notre</span>
+                        Consultation Liste</h2>
                 </div>
             </div>
         </div>
@@ -162,7 +156,7 @@
                             <ul class=" nav navbar-nav  text-uppercase">
 
                                 <li>
-                                    <a href="/user">Dashboard user</a>
+                                    <a href="/user">tableau de bord</a>
 
                                 </li>
 
@@ -214,7 +208,7 @@
                                     </ul>
                                 </div>
                                 <li>
-                                    <a *ngIf="loggedIn()" (click)="logout()">Log Out</a>
+                                    <a *ngIf="loggedIn()" (click)="logout()">Déconnexion</a>
                                 </li>
 
                             </ul>
@@ -224,8 +218,11 @@
                 <!-- COLUMNS 2 -->
                 <div class="  col-md-9 col-sm-6 m-b30">
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                        Créer consultation </button>
+                    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        Créer consultation </button> -->
+
+                        <button mat-raised-button style="background-color: #F5BF23; width: 20%; "class="btn-block" data-toggle="modal" data-target="#exampleModal"  type="button" > Créer consultation</button>
+
 
                     <br>
                     <br>
@@ -237,7 +234,7 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Date&Heure</th>
+                                <th>Date</th>
                                 <th>Lieu</th>
                                 <th>Sujet</th>
                                 <th>Status</th>
@@ -259,8 +256,10 @@
 
                                     <td>
 
-                                        <a href="#" [routerLink]="['/consultationuser/', consultation.id, 'view'] "
-                                            class="btn btn-info">View</a>
+                                        <!-- <a href="#" [routerLink]="['/consultationuser/', consultation.id, 'view'] "
+                                            class="btn btn-info">View</a> -->
+                                            <button mat-raised-button color=primary style="width: 20%; " class="btn-block" [routerLink]="['/consultationuser/', consultation.id, 'view'] "  type="button" >Détail</button>
+
 
 
 
@@ -311,13 +310,14 @@
                 <div class="form-group">
                     <form [formGroup]="form" (ngSubmit)="submit()">
                         <div class="form-group">
-                            <label for="body">Date&Heure:</label>
-                            <input id="Date" type="datetime-local" formControlName="Date" class="form-control"
+                            <label for="body">Date:</label>
+                            <input id="Date" type="date" formControlName="Date" class="form-control"
                                 [ngClass]="{ 'is-invalid': submitted && f['Date'].errors }">
                             <div *ngIf="submitted && f['Date'].errors" class="invalid-feedback">
                                 <div *ngIf="f['Date'].errors['required']" class="alert alert-danger">Date is required
                                 </div>
                                 <div *ngIf="f['Date'].errors['Date']" class="alert alert-danger">Date is invalid</div>
+                                
                             </div>
 
 
@@ -330,9 +330,9 @@
                                 <option *ngFor="let Lieu of Lieu" [value]="Lieu">{{Lieu}}</option>
                             </select>
                             <div *ngIf="submitted && f['Lieu'].errors" class="invalid-feedback">
-                                <div *ngIf="f['Lieu'].errors['required']" class="alert alert-danger">Date is required
+                                <div *ngIf="f['Lieu'].errors['required']" class="alert alert-danger">Lieu is required
                                 </div>
-                                <div *ngIf="f['Lieu'].errors['Date']" class="alert alert-danger">Date is invalid</div>
+                                <div *ngIf="f['Lieu'].errors['Date']" class="alert alert-danger">Lieu is invalid</div>
                             </div>
 
 
@@ -344,9 +344,9 @@
                             <input id="sujet" type="text" formControlName="sujet" pattern="[A-Za-z]"
                                 class="form-control" [ngClass]="{ 'is-invalid': submitted && f['sujet'].errors }">
                             <div *ngIf="submitted && f['sujet'].errors" class="invalid-feedback">
-                                <div *ngIf="f['sujet'].errors['required']" class="alert alert-danger">Date is required
+                                <div *ngIf="f['sujet'].errors['required']" class="alert alert-danger">Sujet is required
                                 </div>
-                                <div *ngIf="f['sujet'].errors['sujet']" class="alert alert-danger">Date is invalid</div>
+                                <div *ngIf="f['sujet'].errors['sujet']" class="alert alert-danger">Sujet is invalid</div>
                             </div>
 
 
@@ -357,7 +357,7 @@
 
                         </div>
                         <button type="submit"
-                            class="site-button btn-effect text-uppercase button-sm letter-spacing-2">Create</button>
+                            class="site-button btn-effect text-uppercase button-sm letter-spacing-2" onclick="Date()">Créer</button>
 
 
 
@@ -369,7 +369,7 @@
                     <div class="modal-footer">
                         <button type="button"
                             class="site-button btn-effect text-uppercase button-sm letter-spacing-2 m-r15"
-                            data-dismiss="modal">Close</button>
+                            data-dismiss="modal">Fermer</button>
 
                     </div>
                 </div>

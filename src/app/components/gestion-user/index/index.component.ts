@@ -31,7 +31,7 @@ id:'',
     id: '',
   }
   users: user[] = [];
-
+user4:user;
    
   user : user ={
     firstname: '',
@@ -112,6 +112,8 @@ id:'',
       this.userService.update(id, this.user1).subscribe((res:any) => {
         this.ngOnInit()
    })
+   this.getuserbyid(id);
+
     }
   
     archiver(id: any) {
@@ -161,6 +163,19 @@ id:'',
     this.submitted = false;
     this.form.reset();
   }
-   
+
+  getuserbyid(id:any){
+this.userService.find(id).subscribe(res=>{
+  this.user4 = res;
+  console.log(res);
+  this.send();
+})
+  }
+  
+   send(){
+     this.userService.sendEmail(this.user4).subscribe(res=>{
+       console.log(res);
+     });
+   }
 
 }

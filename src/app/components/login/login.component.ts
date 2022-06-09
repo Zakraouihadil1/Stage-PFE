@@ -17,6 +17,9 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class LoginComponent implements OnInit {
 
+  email = new FormControl('', [Validators.required, Validators.email]);
+  password = new FormControl('', [Validators.required]);
+
 
 
 
@@ -29,7 +32,7 @@ export class LoginComponent implements OnInit {
    
 
   });
-
+  hide = true;
   data:any;
   token:any;
 
@@ -39,6 +42,7 @@ export class LoginComponent implements OnInit {
     email: '',
     roles:'',
     status:'',
+    password:''
   
   }
   users: user[] = [];
@@ -159,6 +163,23 @@ export class LoginComponent implements OnInit {
       this.ngOnInit()
  })
   }
+  
+  getErrorMessage() {
+    
+    if (this.email.hasError('required')) {
+      return 'vous devez entrer votre email';
+    }
 
+    return this.email.hasError('email') ? 'email invalide' : '';
+  }
+
+  getErrorMessage1() {
+    
+    if (this.password.hasError('required')) {
+      return 'vous devez entrer votre mot de passe';
+    }
+
+    return this.password.hasError('password') ? 'mot de passe invalide' : '';
+  }
 
 }
